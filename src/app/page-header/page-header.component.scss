@@ -1,0 +1,67 @@
+/*
+.example-spacer {
+  flex: 1 1 auto;
+}
+
+.mat-toolbar-single-row {
+  background-color: #011640;
+  height: 82px;
+  padding: 0 23%;
+}
+*/
+
+nav {
+  width: 100%;
+  margin: 0px auto 0px auto;
+  background-color: #011640;
+  position: sticky;
+  top: 0px;
+  height: 66px;
+}
+
+nav ul {
+  list-style-type: none;
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 0;
+  padding-top: 13px;
+}
+
+nav li {
+  float: left;
+  width: 12%; /*100% divisé par le nombre d'éléments de menu*/
+  text-align: center; /*Centre le texte dans les éléments de menu*/
+}
+
+/*Evite que le menu n'ait une hauteur nulle*/
+nav ul::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+nav a {
+  display: block; /*Toute la surface sera cliquable*/
+  text-decoration: none;
+  color: #ffffff;
+  border-bottom: 2px solid transparent; /*Evite le décalage des éléments sous le menu à cause de la bordure en :hover*/
+  padding: 10px 0px; /*Agrandit le menu et espace la bordure du texte*/
+  font-weight: 600;
+  line-height: 20px;
+  font-size: 16px;
+}
+
+nav a:hover {
+  color: #ffffff;
+  border-bottom: 3px solid #61bb45;
+}
+
+@media screen and (max-width: 600px) {
+  nav {
+    margin-top: 20px;
+  }
+
+  nav li {
+    width: 30%;
+  }
+}
