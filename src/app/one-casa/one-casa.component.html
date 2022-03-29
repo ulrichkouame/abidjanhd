@@ -1,0 +1,39 @@
+<div class="one-casa">
+  <h2>{{hddata?.title}}</h2>
+  <div class="gauche">
+    <div class="info">
+      <span class="published">
+        Publié le : {{hddata?.created_at}}
+      </span>
+      <span class="auteur">
+        ID de l'auteur  : {{hddata?.author_id}}
+      </span>
+      <span class="type-bien">
+        ID de l'auteur  : {{hddata?.id_bien}}
+      </span>
+      <span class="lieu">
+        Lieu  : {{hddata?.lieu}}
+      </span>
+    </div>
+    <div class="description">
+      <h3>{{hddata.prix_min}}F CFA - {{hddata.prix_max}}F CFA</h3>
+      <p></p>
+      <p ng-bind-html="myHTML">{{hddata.body}}</p>
+      <div>
+
+      </div>
+    </div>
+  </div>
+  <div class="droite">
+    <h3>Contact</h3>
+    <div>
+      Géolocalisation <br>
+      {{hddata?.lieu}}
+    </div>
+    <div>
+      Numéro de téléphone <br>
+      {{hddata?.telephone}}
+    </div>
+  </div>
+</div>
+

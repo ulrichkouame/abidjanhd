@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from "@angular/common/http";
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -18,13 +19,18 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { CommentCaMarcheComponent } from './comment-ca-marche/comment-ca-marche.component';
 
 import { ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from "@angular/common/http";
+
 import { NoopAnimationsModule, BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatInputModule } from "@angular/material/input";
 import { ContactComponent } from './contact/contact.component';
 import { FooterComponent } from './footer/footer.component';
 import { PageContactComponent } from './page-contact/page-contact.component';
 import { PageAccueilComponent } from './page-accueil/page-accueil.component';
+import { MicasaComponent } from './micasa/micasa.component';
+import { OneCasaComponent } from './one-casa/one-casa.component';
+
+import { MapsModule } from '@syncfusion/ej2-angular-maps';
+import { LegendService, MarkerService, MapsTooltipService, DataLabelService, BubbleService, NavigationLineService, SelectionService, AnnotationsService, ZoomService } from '@syncfusion/ej2-angular-maps';
 
 
 @NgModule({
@@ -39,12 +45,15 @@ import { PageAccueilComponent } from './page-accueil/page-accueil.component';
     ContactComponent,
     FooterComponent,
     PageContactComponent,
-    PageAccueilComponent
+    PageAccueilComponent,
+    MicasaComponent,
+    OneCasaComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    HttpClientModule,
     MatToolbarModule,
     MatIconModule,
     MatGridListModule,
@@ -55,9 +64,10 @@ import { PageAccueilComponent } from './page-accueil/page-accueil.component';
 		HttpClientModule,
 		NoopAnimationsModule,
 		MatInputModule,
-		BrowserAnimationsModule
+		BrowserAnimationsModule,
+    MapsModule
   ],
-  providers: [],
+  providers: [LegendService, MarkerService, MapsTooltipService, DataLabelService, BubbleService, NavigationLineService , SelectionService, AnnotationsService, ZoomService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
