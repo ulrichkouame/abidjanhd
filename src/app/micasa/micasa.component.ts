@@ -22,7 +22,7 @@ export class MicasaComponent implements OnInit {
   constructor(private http : HttpClient) {
 
     this.formData.append("email", 'henri@bigfiveabidjan.com');
-    this.formData.append("password", 'bigfiveabidjan');
+    this.formData.append("password", 'CL9tdjV24');
   }
 
   public connectServer() {
@@ -56,6 +56,9 @@ export class MicasaComponent implements OnInit {
     localStorage.setItem('posts', jsonData);
     localStorage.setItem('postsLength', response.data.length);
     //this.nombrePost = response.data.lenght;
+    this.nombrePost = localStorage.getItem('postsLength');
+    this.posts = localStorage.getItem('posts');
+    this.posts = JSON.parse(this.posts);
   }
 
   ngOnInit(): void {
@@ -67,12 +70,4 @@ export class MicasaComponent implements OnInit {
     //console.log(this.posts)
     //console.log(localStorage.getItem('posts')?.length);
   }
-
-  ngAfterViewInit() {
-    // viewChild is set after the view has been initialized
-    //this.logIt('AfterViewInit');
-    //this.doSomething();
-  }
-
-
 }
