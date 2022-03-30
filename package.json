@@ -2,12 +2,12 @@
   "name": "abidjanhd",
   "version": "0.0.0",
   "engines": {
-    "node": "16.x",
-    "npm": "8.x"
+    "node": "16.13.1",
+    "npm": "8.2.0"
   },
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "node server.js",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
