@@ -17,8 +17,7 @@
     </div>
     <div class="description">
       <h3>{{hddata.prix_min}}F CFA - {{hddata.prix_max}}F CFA</h3>
-      <p></p>
-      <p ng-bind-html="myHTML">{{hddata.body}}</p>
+      <div [innerHTML]="hddata.body"></div>
       <div>
 
       </div>
