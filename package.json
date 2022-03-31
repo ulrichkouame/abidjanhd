@@ -29,6 +29,7 @@
     "@syncfusion/ej2-angular-maps": "^19.4.56",
     "crypto-js": "^4.1.1",
     "express": "^4.17.3",
+    "material-design-icons": "^3.0.1",
     "path": "^0.12.7",
     "rxjs": "~7.4.0",
     "tslib": "^2.3.0",
