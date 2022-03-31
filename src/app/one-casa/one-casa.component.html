@@ -34,13 +34,24 @@
   </div>
   <div class="droite">
     <h3>Contact</h3>
-    <div>
-      Géolocalisation <br>
-      {{hddata?.lieu}}
+    <div class="geo">
+      <span class="material-icons">
+        location_on
+      </span>
+      <div>
+        Géolocalisation <br>
+        {{hddata?.lieu}}
+      </div>
+
     </div>
-    <div>
-      Numéro de téléphone <br>
-      {{hddata?.telephone}}
+    <div class="geo">
+      <span class="material-icons">
+        phone
+      </span>
+      <div>
+        Numéro de téléphone <br>
+        {{hddata?.telephone}}
+      </div>
     </div>
   </div>
 </div>
