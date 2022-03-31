@@ -3,21 +3,30 @@
   <div class="gauche">
     <div class="info">
       <span class="published">
-        Publié le : {{hddata?.created_at}}
+        <span class="material-icons">
+          schedule
+        </span>
+        Publié le : {{hddata.created_at | date: 'd MMMM y'}}
       </span>
-      <span class="auteur">
-        ID de l'auteur  : {{hddata?.author_id}}
-      </span>
+      <!--<span class="auteur">
+        par  {{post.author_id}}
+      </span>-->
       <span class="type-bien">
-        ID de l'auteur  : {{hddata?.id_bien}}
+        <span class="material-icons">
+          local_offer
+        </span>
+        {{hddata.id_bien}}
       </span>
       <span class="lieu">
-        Lieu  : {{hddata?.lieu}}
+        <span class="material-icons">
+          location_on
+        </span>
+        Lieu  : {{hddata.lieu}}
       </span>
     </div>
     <div class="description">
       <h3>{{hddata.prix_min}}F CFA - {{hddata.prix_max}}F CFA</h3>
-      <div [innerHTML]="hddata.body"></div>
+      <div class="casa-body" [innerHTML]="hddata.body"></div>
       <div>
 
       </div>

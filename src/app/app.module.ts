@@ -32,7 +32,6 @@ import { OneCasaComponent } from './one-casa/one-casa.component';
 import { MapsModule } from '@syncfusion/ej2-angular-maps';
 import { LegendService, MarkerService, MapsTooltipService, DataLabelService, BubbleService, NavigationLineService, SelectionService, AnnotationsService, ZoomService } from '@syncfusion/ej2-angular-maps';
 
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -67,7 +66,7 @@ import { LegendService, MarkerService, MapsTooltipService, DataLabelService, Bub
 		BrowserAnimationsModule,
     MapsModule
   ],
-  providers: [LegendService, MarkerService, MapsTooltipService, DataLabelService, BubbleService, NavigationLineService , SelectionService, AnnotationsService, ZoomService],
+  providers: [LegendService, MarkerService, MapsTooltipService, DataLabelService, BubbleService, NavigationLineService , SelectionService, AnnotationsService, ZoomService,],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

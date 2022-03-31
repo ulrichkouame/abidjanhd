@@ -6,21 +6,30 @@
     <div class="list" *ngFor="let post of posts">
 
       <div class="gauche-img">
-        <img src="https://abidjanhd.bigfive.dev/storage/{{post.image}}" alt="{{post.title}}" />
+        <a mat-button routerLink="/micasa/{{post.id}}" [state]="{ data:post }"><img src="https://abidjanhd.bigfive.dev/storage/{{post.image}}" alt="{{post.title}}" /></a>
       </div>
       <div class="droite">
         <h2><a mat-button routerLink="/micasa/{{post.id}}" [state]="{ data:post }">{{post.title}}</a></h2>
         <div class="info">
           <span class="published">
-            Publié le : {{post.created_at}}
+            <span class="material-icons">
+              schedule
+            </span>
+            Publié le : {{post.created_at | date: 'd MMMM y'}}
           </span>
-          <span class="auteur">
-            ID de l'auteur  : {{post.author_id}}
-          </span>
+          <!--<span class="auteur">
+            par  {{post.author_id}}
+          </span>-->
           <span class="type-bien">
-            ID de l'auteur  : {{post.id_bien}}
+            <span class="material-icons">
+              local_offer
+            </span>
+            {{post.id_bien}}
           </span>
           <span class="lieu">
+            <span class="material-icons">
+              location_on
+            </span>
             Lieu  : {{post.lieu}}
           </span>
         </div>
