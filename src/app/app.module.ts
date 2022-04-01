@@ -1,6 +1,11 @@
-import { NgModule } from '@angular/core';
+import { NgModule, LOCALE_ID } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from "@angular/common/http";
+
+//Local data
+import { registerLocaleData } from '@angular/common';
+import localeFr from '@angular/common/locales/fr';
+registerLocaleData(localeFr);
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -28,9 +33,7 @@ import { PageContactComponent } from './page-contact/page-contact.component';
 import { PageAccueilComponent } from './page-accueil/page-accueil.component';
 import { MicasaComponent } from './micasa/micasa.component';
 import { OneCasaComponent } from './one-casa/one-casa.component';
-
-import { MapsModule } from '@syncfusion/ej2-angular-maps';
-import { LegendService, MarkerService, MapsTooltipService, DataLabelService, BubbleService, NavigationLineService, SelectionService, AnnotationsService, ZoomService } from '@syncfusion/ej2-angular-maps';
+import { SafePipe } from './pipe/safe.pipe';
 
 @NgModule({
   declarations: [
@@ -46,7 +49,8 @@ import { LegendService, MarkerService, MapsTooltipService, DataLabelService, Bub
     PageContactComponent,
     PageAccueilComponent,
     MicasaComponent,
-    OneCasaComponent
+    OneCasaComponent,
+    SafePipe
   ],
   imports: [
     BrowserModule,
@@ -62,11 +66,11 @@ import { LegendService, MarkerService, MapsTooltipService, DataLabelService, Bub
     ReactiveFormsModule,
 		HttpClientModule,
 		NoopAnimationsModule,
-		MatInputModule,
-		BrowserAnimationsModule,
-    MapsModule
+		MatInputModule
   ],
-  providers: [LegendService, MarkerService, MapsTooltipService, DataLabelService, BubbleService, NavigationLineService , SelectionService, AnnotationsService, ZoomService,],
+  providers: [
+    { provide: LOCALE_ID, useValue: 'fr-FR'},
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

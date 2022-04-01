@@ -1,16 +1,20 @@
-import { Component, OnInit, ViewEncapsulation, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation, ViewChild, Pipe, PipeTransform } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Maps } from '@syncfusion/ej2-angular-maps';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-one-casa',
   templateUrl: './one-casa.component.html',
   styleUrls: ['./one-casa.component.scss']
 })
+
 export class OneCasaComponent implements OnInit {
   public layerType: string = '';
   hddata: any;
   posts:any = localStorage.getItem('posts');
+
+  //embedUrl: string = '<iframe width="300" height="170" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?q=5.295799408188004,-3.9972884&hl=es&z=14&amp;output=embed"></iframe>';
+  embedUrl: string = 'https://maps.google.com/maps?q=5.295799408188004,-3.9972884&hl=es&z=14';
 
   constructor(private route: ActivatedRoute) { }
 
@@ -29,7 +33,8 @@ export class OneCasaComponent implements OnInit {
   ngOnInit(): void {
     const id:any = this.route.snapshot.paramMap.get('id');
     this.getPostData(id);
-    this.layerType = 'OSM';
+    console.log(this.embedUrl)
+    this.embedUrl = "https://maps.google.com/maps?q="+this.hddata.latitude+","+this.hddata.longitude+"&hl=es&z=14";
   }
 
 }

@@ -15,7 +15,7 @@
             <span class="material-icons">
               schedule
             </span>
-            Publié le : {{post.created_at | date: 'd MMMM y'}}
+            Publié le : {{post.created_at | date: 'd MMMM y':'fr-FR'}}
           </span>
           <!--<span class="auteur">
             par  {{post.author_id}}
@@ -33,7 +33,7 @@
             Lieu  : {{post.lieu}}
           </span>
         </div>
-        <h3>{{post.prix_min}}F CFA - {{post.prix_max}}F CFA</h3>
+        <h3>{{post.prix_min | currency:'F CFA':'symbol':'4.0':'fr-FR'}} - {{post.prix_max | currency:'F CFA':'symbol':'4.0':'fr-FR'}}</h3>
       </div>
 
     </div>
