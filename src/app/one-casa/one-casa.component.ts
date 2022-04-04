@@ -33,7 +33,6 @@ export class OneCasaComponent implements OnInit {
   ngOnInit(): void {
     const id:any = this.route.snapshot.paramMap.get('id');
     this.getPostData(id);
-    console.log(this.embedUrl)
     this.embedUrl = "https://maps.google.com/maps?q="+this.hddata.latitude+","+this.hddata.longitude+"&hl=es&z=14";
   }
 

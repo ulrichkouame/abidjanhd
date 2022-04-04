@@ -10,8 +10,8 @@
         <form class="contact" [formGroup]="form" method="post" (ngSubmit)="onSubmit()">
           <mat-form-field>
             <mat-label>Nom et Prénom(s)</mat-label>
-            <input matInput [formControl]="name" required>
-            <mat-error *ngIf="name.invalid">Entrez votre et prénom(s) svp !</mat-error>
+            <input matInput [formControl]="nom" required>
+            <mat-error *ngIf="nom.invalid">Entrez votre et prénom(s) svp !</mat-error>
           </mat-form-field>
           <mat-form-field>
             <mat-label>Email</mat-label>

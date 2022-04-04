@@ -12,31 +12,16 @@ export class MicasaComponent implements OnInit {
   posts: any;
   token:string = '';
   // Variables
-  authUrl = 'https://abidjanhd.bigfive.dev/api/login';
   apiUrl = 'https://abidjanhd.bigfive.dev/api/';
-
 
   //options: any;
   formData: any = new FormData();
 
   constructor(private http : HttpClient) {
-
-    this.formData.append("email", 'henri@bigfiveabidjan.com');
-    this.formData.append("password", 'CL9tdjV24');
   }
 
-  public connectServer() {
-    this.http.post(this.authUrl, this.formData)
-    .subscribe(
-      (response) => {
-        this.getPosts(response);
-      },
-      (error) => console.log(error)
-    );
-  };
-
-  public getPosts(response:any){
-    const token = response.token;
+  getPosts(){
+    const token = localStorage.getItem('token');
 
     const headers = new HttpHeaders({
       'Authorization': `Bearer ${token}`
@@ -62,12 +47,10 @@ export class MicasaComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.connectServer() ;
+    this.getPosts();
     this.nombrePost = localStorage.getItem('postsLength');
     this.posts = localStorage.getItem('posts');
     this.posts = JSON.parse(this.posts);
 
-    //console.log(this.posts)
-    //console.log(localStorage.getItem('posts')?.length);
   }
 }
