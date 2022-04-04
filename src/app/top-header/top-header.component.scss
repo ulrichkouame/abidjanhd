@@ -62,6 +62,10 @@ mat-grid-list.mat-grid-list {
 }
 
 @media screen and (max-width: 600px) {
+  .logo {
+    width: 30%;
+    display: inline-block;
+  }
   .zone-icone h3 {
     font-size: 13px;
   }
@@ -73,7 +77,7 @@ mat-grid-list.mat-grid-list {
   }
 
   .zone-icone {
-    width: 60%;
+    width: 70%;
     margin-top: 0;
     height: 55px;
     display: inline-block;
@@ -95,6 +99,10 @@ mat-grid-list.mat-grid-list {
 
   .zone-icone .information {
     width: 70%;
+  }
+
+  .video-intro {
+    left: 0;
   }
 }
 

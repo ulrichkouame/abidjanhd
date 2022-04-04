@@ -54,3 +54,11 @@ p.ng-star-inserted {
   margin-top: 15px;
   margin-bottom: 0;
 }
+
+@media screen and (max-width: 600px) {
+
+  .iframe {
+    width: 100%!important;
+  }
+
+}

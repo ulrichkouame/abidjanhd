@@ -38,3 +38,14 @@ p {
   display: inline-block;
   color: #60ba45;
 }
+
+@media screen and (max-width: 600px) {
+  .section-footer {
+    width: 100%;
+  }
+  .section-gauche, .section-droite {
+    width: 100%;
+    text-align: center;
+  }
+
+}

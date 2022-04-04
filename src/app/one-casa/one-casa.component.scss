@@ -86,3 +86,45 @@ h3 {
 .droite h3 {
   margin-top: 0;
 }
+
+@media screen and (max-width: 600px) {
+
+  h2 {
+    text-align: center;
+    font-weight: 700;
+    font-size: 26px;
+  }
+
+  .gauche {
+    width: 90%;
+    margin-right: 0;
+    padding: 0 5%;
+    border: none;
+  }
+
+  .type-bien, .lieu{
+    margin: 0px;
+    display: inline-block;
+  }
+
+  h3 {
+    text-align: center;
+    margin: 20px 0;
+  }
+
+  .casa-body, .visiter {
+    margin: 20px 0;
+  }
+
+  .droite {
+    margin-top: 40px;
+    width: 90%;
+    padding: 5%;
+    font-size: 18px;
+    line-height: 26px;
+  }
+  .material-icons {
+    font-size: 32px;
+  }
+
+}
