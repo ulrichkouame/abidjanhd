@@ -87,6 +87,15 @@ h3 {
   margin-top: 0;
 }
 
+.casa-body, .visiter {
+  margin: 20px 0;
+}
+
+.iframe {
+  margin: 20px 0;
+}
+
+
 @media screen and (max-width: 600px) {
 
   h2 {
@@ -109,10 +118,6 @@ h3 {
 
   h3 {
     text-align: center;
-    margin: 20px 0;
-  }
-
-  .casa-body, .visiter {
     margin: 20px 0;
   }
 
