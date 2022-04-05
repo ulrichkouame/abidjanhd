@@ -1,7 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
-import { Meta, Title } from '@angular/platform-browser';
 
 @Component({
 	selector: 'app-contact',
@@ -21,8 +20,6 @@ export class ContactComponent implements OnInit {
 	constructor(
     private formBuilder: FormBuilder,
     private http: HttpClient,
-    private meta: Meta,
-    private titleService: Title
     ) {
 		this.form = this.formBuilder.group({
 			nom: this.nom,
@@ -30,8 +27,6 @@ export class ContactComponent implements OnInit {
 			message: this.message,
 			honeypot: this.honeypot
 		});
-    this.titleService.setTitle('Contactez-nous - Abidjan HD');
-    this.meta.updateTag({ name: 'description', content: "Contactez-nous pour toutes vos questions, suggestions ou demandes d'informations." });
 	}
 	ngOnInit(): void {
 	}
