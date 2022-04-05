@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
+import { Meta, Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-micasa',
@@ -17,8 +18,15 @@ export class MicasaComponent implements OnInit {
   //options: any;
   formData: any = new FormData();
 
-  constructor(private http : HttpClient) {
-  }
+  constructor(
+    private http : HttpClient,
+    private meta: Meta,
+    private titleService: Title
+    ) {
+    this.titleService.setTitle('Modèle de visite 3D et HD - Abidjan HD');
+    this.meta.updateTag({ name: 'description', content: "Vos locations et maisons à Abidjan grâce aux visites virtuelles 3D et HD" });
+    }
+
 
   getPosts(){
     const token = localStorage.getItem('token');

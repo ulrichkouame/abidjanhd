@@ -1,6 +1,5 @@
-import { Component, OnInit, ViewEncapsulation, ViewChild, Pipe, PipeTransform } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-one-casa',
@@ -13,7 +12,6 @@ export class OneCasaComponent implements OnInit {
   hddata: any;
   posts:any = localStorage.getItem('posts');
 
-  //embedUrl: string = '<iframe width="300" height="170" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?q=5.295799408188004,-3.9972884&hl=es&z=14&amp;output=embed"></iframe>';
   embedUrl: string = 'https://maps.google.com/maps?q=5.295799408188004,-3.9972884&hl=es&z=14';
 
   constructor(private route: ActivatedRoute) { }

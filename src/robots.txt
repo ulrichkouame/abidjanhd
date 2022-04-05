@@ -1,0 +1,3 @@
+User-agent: *
+Disallow:
+Sitemap: https://abidjanhd.herokuapp.com/sitemap.xml
