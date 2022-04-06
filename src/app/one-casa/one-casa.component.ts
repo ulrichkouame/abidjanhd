@@ -12,7 +12,7 @@ export class OneCasaComponent implements OnInit {
   hddata: any;
   posts:any = localStorage.getItem('posts');
 
-  embedUrl: string = 'https://maps.google.com/maps?q=5.295799408188004,-3.9972884&hl=es&z=14';
+  embedUrl: string = '';
 
   constructor(private route: ActivatedRoute) { }
 
