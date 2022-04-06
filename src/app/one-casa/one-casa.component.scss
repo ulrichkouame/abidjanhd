@@ -98,6 +98,15 @@ h3 {
 
 @media screen and (max-width: 600px) {
 
+  .info {
+    line-height: 40px;
+    width: calc(100% - 100px);
+    padding: 10px 50px;
+  }
+  .type-bien, .lieu, .published {
+    display: block;
+    width: 100%;
+  }
   h2 {
     text-align: center;
     font-weight: 700;
