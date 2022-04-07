@@ -1,39 +1,46 @@
 import { NgModule, LOCALE_ID } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from "@angular/common/http";
 
+import { AppRoutingModule } from './app-routing.module';
+
+//Amelioration du code
+import { CoreModule } from './core/core.module';
+import { SharedModule } from './shared/shared.module';
 //Local data
 import { registerLocaleData } from '@angular/common';
 import localeFr from '@angular/common/locales/fr';
 registerLocaleData(localeFr);
 
-import { AppRoutingModule } from './app-routing.module';
+
 import { AppComponent } from './app.component';
-import { PageHeaderComponent } from './page-header/page-header.component';
+import { PageHeaderComponent } from './features/page-header/page-header.component';
 
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
-import { TopHeaderComponent } from './top-header/top-header.component';
+import { TopHeaderComponent } from './features/top-header/top-header.component';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatListModule } from '@angular/material/list';
-import { SliderHomeComponent } from './slider-home/slider-home.component';
-import { HomeSectionDescriptionComponent } from './home-section-description/home-section-description.component';
-import { NotreOffreComponent } from './notre-offre/notre-offre.component';
+import { SliderHomeComponent } from './features/slider-home/slider-home.component';
+import { HomeSectionDescriptionComponent } from './features/home-section-description/home-section-description.component';
+import { NotreOffreComponent } from './features/notre-offre/notre-offre.component';
 import { MatTabsModule } from '@angular/material/tabs';
-import { CommentCaMarcheComponent } from './comment-ca-marche/comment-ca-marche.component';
+import { CommentCaMarcheComponent } from './features/comment-ca-marche/comment-ca-marche.component';
 
 import { ReactiveFormsModule } from '@angular/forms';
 
 import { NoopAnimationsModule, BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatInputModule } from "@angular/material/input";
-import { ContactComponent } from './contact/contact.component';
-import { FooterComponent } from './footer/footer.component';
-import { PageContactComponent } from './page-contact/page-contact.component';
-import { PageAccueilComponent } from './page-accueil/page-accueil.component';
-import { MicasaComponent } from './micasa/micasa.component';
-import { OneCasaComponent } from './one-casa/one-casa.component';
-import { SafePipe } from './pipe/safe.pipe';
+import { ContactComponent } from './features/contact/contact.component';
+import { FooterComponent } from './features/footer/footer.component';
+import { PageContactComponent } from './pages/page-contact/page-contact.component';
+import { PageAccueilComponent } from './pages/page-accueil/page-accueil.component';
+import { MicasaComponent } from './pages/micasa/micasa.component';
+import { OneCasaComponent } from './pages/one-casa/one-casa.component';
+import { SafePipe } from './core/pipe/safe.pipe';
+import { SigninComponent } from './pages/signin/signin.component';
+import { SignupComponent } from './pages/signup/signup.component';
+import { UserProfileComponent } from './pages/user-profile/user-profile.component';
 
 @NgModule({
   declarations: [
@@ -50,13 +57,17 @@ import { SafePipe } from './pipe/safe.pipe';
     PageAccueilComponent,
     MicasaComponent,
     OneCasaComponent,
-    SafePipe
+    SafePipe,
+    SigninComponent,
+    SignupComponent,
+    UserProfileComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    CoreModule,
+    SharedModule,
     BrowserAnimationsModule,
-    HttpClientModule,
     MatToolbarModule,
     MatIconModule,
     MatGridListModule,
@@ -64,7 +75,6 @@ import { SafePipe } from './pipe/safe.pipe';
     MatListModule,
     MatTabsModule,
     ReactiveFormsModule,
-		HttpClientModule,
 		NoopAnimationsModule,
 		MatInputModule
   ],
