@@ -9,6 +9,39 @@ export class PageHeaderComponent implements OnInit {
 
   constructor() {}
 
-  ngOnInit(): void {}
+  //options: any;
+  formData: any = new FormData();
+
+  //afficher ou cacher le menu mobile
+  largeurFenetre: any;
+  isMobile!: boolean;
+  isToggled!: boolean;
+  afficher: boolean = false;
+  etatdumenu: boolean = false;
+
+
+  getToken(response: any) {
+    const token = response.token;
+
+    localStorage.setItem('token', token);
+  }
+
+  ngOnInit(): void {
+
+    //affichage ou non du menu mobile app
+    this.menumobile();
+  }
+  menumobile() {
+    //recuperer la largeur de la fenetre
+    this.largeurFenetre = window.innerWidth;
+    console.log(this.largeurFenetre);
+    this.largeurFenetre <= 768 ? this.isMobile = true : this.isMobile = false;
+    console.log(this.isMobile);
+  }
+  toggleur() {
+    this.afficher = !this.afficher;
+    this.etatdumenu = !this.etatdumenu;
+    console.log(this.afficher);
+  }
 
 }

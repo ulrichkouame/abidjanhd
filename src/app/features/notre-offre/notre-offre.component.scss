@@ -1,64 +1,73 @@
 .divider-separator {
-  border-top: 1px solid gray;
+    border-top: 1px solid gray;
 }
 
 .notre-offre {
-  max-width: 1140px;
-  margin: 0 auto;
-  height: 800px;
-  padding: 40px 0;
+    max-width: 1140px;
+    margin: 0 auto;
+    height: 800px;
+    padding: 40px 0;
 }
 
 h2 {
-  font-size: 32px !important;
-  text-align: center;
-  color: #011640;
+    font-size: 32px !important;
+    text-align: center;
+    color: #011640;
 }
 
 .mat-tab-body-content {
-  height: 100%;
-  overflow: auto;
-  text-align: center;
+    height: 100%;
+    overflow: auto;
+    text-align: center;
 }
 
 button.btn-savoir-plus {
-  background: #011640;
-  color: #fff !important;
-  font-weight: 800;
-  text-transform: uppercase;
-  text-shadow: 0px 0px 10px rgb(0 0 0 / 30%);
-  fill: #011640;
-  line-height: 1;
-  font-size: 15px;
-  padding: 12px 24px;
-  border: none;
-  border-radius: 4px;
-  margin-bottom: 20px;
+    background: #011640;
+    color: #fff !important;
+    font-weight: 800;
+    text-transform: uppercase;
+    text-shadow: 0px 0px 10px rgb(0 0 0 / 30%);
+    fill: #011640;
+    line-height: 1;
+    font-size: 15px;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 4px;
+    margin-bottom: 20px;
 }
 
 button.btn-savoir-plus a {
-  color: #fff !important;
-  text-decoration: none;
+    color: #fff !important;
+    text-decoration: none;
 }
 
 .savoir-plus {
-  text-align: center;
-  margin-top: 40px;
+    text-align: center;
+    margin-top: 40px;
 }
 
 iframe {
-  margin-top: 20px;
+    margin-top: 20px;
 }
 
 p.ng-star-inserted {
-  margin-top: 15px;
-  margin-bottom: 0;
+    margin-top: 15px;
+    margin-bottom: 0;
 }
 
 @media screen and (max-width: 600px) {
+    .iframe {
+        width: 100%!important;
+    }
+}
 
-  .iframe {
-    width: 100%!important;
-  }
-
+//pour la comparaison d'images
+img-comparison-slider {
+    --divider-width: 2px;
+    --divider-color: #c0c0c0;
+    --default-handle-opacity: 0.3;
+    width: 100%;
+    img {
+        width: 100%;
+    }
 }
