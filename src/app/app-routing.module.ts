@@ -5,12 +5,18 @@ import { PageAccueilComponent } from './pages/page-accueil/page-accueil.componen
 import { PageContactComponent } from './pages/page-contact/page-contact.component';
 import { MicasaComponent } from './pages/micasa/micasa.component';
 import { OneCasaComponent } from './pages/one-casa/one-casa.component';
+import { SigninComponent } from './pages/signin/signin.component';
+import { SignupComponent } from './pages/signup/signup.component';
+import { UserProfileComponent } from './pages/user-profile/user-profile.component';
 
 const routes: Routes = [
   { path: '', component: PageAccueilComponent },
   { path: 'contact', component: PageContactComponent },
   { path: 'micasa', component: MicasaComponent },
-  { path: 'micasa/:id', component: OneCasaComponent }
+  { path: 'micasa/:id', component: OneCasaComponent },
+  { path: 'login', component: SigninComponent },
+  { path: 'register', component: SignupComponent },
+  { path: 'profile', component: UserProfileComponent }
 ];
 
 @NgModule({
