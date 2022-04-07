@@ -15,22 +15,12 @@ registerLocaleData(localeFr);
 import { AppComponent } from './app.component';
 import { PageHeaderComponent } from './features/page-header/page-header.component';
 
-import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatIconModule } from '@angular/material/icon';
 import { TopHeaderComponent } from './features/top-header/top-header.component';
-import { MatGridListModule } from '@angular/material/grid-list';
-import { MatMenuModule } from '@angular/material/menu';
-import { MatListModule } from '@angular/material/list';
 import { SliderHomeComponent } from './features/slider-home/slider-home.component';
 import { HomeSectionDescriptionComponent } from './features/home-section-description/home-section-description.component';
 import { NotreOffreComponent } from './features/notre-offre/notre-offre.component';
-import { MatTabsModule } from '@angular/material/tabs';
 import { CommentCaMarcheComponent } from './features/comment-ca-marche/comment-ca-marche.component';
 
-import { ReactiveFormsModule } from '@angular/forms';
-
-import { NoopAnimationsModule, BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatInputModule } from "@angular/material/input";
 import { ContactComponent } from './features/contact/contact.component';
 import { FooterComponent } from './features/footer/footer.component';
 import { PageContactComponent } from './pages/page-contact/page-contact.component';
@@ -41,6 +31,10 @@ import { SafePipe } from './core/pipe/safe.pipe';
 import { SigninComponent } from './pages/signin/signin.component';
 import { SignupComponent } from './pages/signup/signup.component';
 import { UserProfileComponent } from './pages/user-profile/user-profile.component';
+
+import { AngularMaterialModule } from './shared/angular-material.module';
+import { NoopAnimationsModule, BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -67,16 +61,11 @@ import { UserProfileComponent } from './pages/user-profile/user-profile.componen
     AppRoutingModule,
     CoreModule,
     SharedModule,
+    AngularMaterialModule,
+    NoopAnimationsModule,
     BrowserAnimationsModule,
-    MatToolbarModule,
-    MatIconModule,
-    MatGridListModule,
-    MatMenuModule,
-    MatListModule,
-    MatTabsModule,
     ReactiveFormsModule,
-		NoopAnimationsModule,
-		MatInputModule
+    FormsModule
   ],
   providers: [
     { provide: LOCALE_ID, useValue: 'fr-FR'},

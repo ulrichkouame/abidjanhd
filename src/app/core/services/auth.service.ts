@@ -1,6 +1,14 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable, of } from 'rxjs';
+import { Observable } from 'rxjs';
+
+// User interface
+export class User {
+  name!: String;
+  email!: String;
+  password!: String;
+  password_confirmation!: String;
+}
 
 @Injectable({
   providedIn: 'root'
@@ -8,7 +16,6 @@ import { Observable, of } from 'rxjs';
 export class AuthService {
 
   // Variables
-  authUrl = 'https://abidjanhd.bigfive.dev/api/login';
   apiUrl = 'https://abidjanhd.bigfive.dev/api/';
   options: any;
 
@@ -16,44 +23,20 @@ export class AuthService {
    * Constructor
    * @param http The http client object
    */
-  constructor(
-    private http: HttpClient
-  ) {
-    this.options = {
-      headers: new HttpHeaders({
-        Accept: 'application/json',
-        'Content-Type': 'application/json'
-      }),
-      formData: {
-        'email': 'henri@bigfiveabidjan.com',
-        'password': 'bigfiveabidjan'
-      }
-    };
+  constructor(private http: HttpClient) {};
+
+   // User registration
+   register(user: User): Observable<any> {
+    return this.http.post(this.apiUrl+'register', user);
   }
-  /**
-   * Get an access token
-   * @param e The email address
-   * @param p The password string
-   */
-  login() {
-    return this.http.post(this.authUrl, this.options);
-  }/*
-  login(e: string, p: string) {
-    return this.http.post(this.authUrl, {
-      grant_type: 'password',
-      client_id: '2',
-      client_secret: 'srKHlpLcnyLaBhZmQsAIuztgY7C0N8gjZPFKjYgu',
-      username: e,
-      password: p,
-      scope: ''
-    }, this.options);
-  }*/
-  /**
-   * Revoke the authenticated user token
-   */
-  logout() {
-    this.options.headers.Authorization = 'Bearer ' + localStorage.getItem('access_token');
-    return this.http.get(this.apiUrl + '/token/revoke', this.options);
+  // Login
+  signin(user: User): Observable<any> {
+    return this.http.post<any>(this.apiUrl+'login', user);
   }
+  // Access user profile
+  profileUser(): Observable<any> {
+    return this.http.get(this.apiUrl+'profile');
+  }
+
 }
 
