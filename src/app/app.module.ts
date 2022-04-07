@@ -1,5 +1,6 @@
-import { NgModule, LOCALE_ID } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule, LOCALE_ID } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 
@@ -76,11 +77,14 @@ import { UserProfileComponent } from './pages/user-profile/user-profile.componen
     MatTabsModule,
     ReactiveFormsModule,
 		NoopAnimationsModule,
-		MatInputModule
+		MatInputModule,
+    FormsModule
   ],
   providers: [
     { provide: LOCALE_ID, useValue: 'fr-FR'},
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+
 })
 export class AppModule { }

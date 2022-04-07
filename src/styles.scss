@@ -29,6 +29,9 @@ body {
 
 //responsive iframe & videos
 @media screen and (max-width: 1024px) {
+    body {
+        overflow-x: hidden;
+    }
     video {
         width: 100vw !important;
     }
@@ -38,5 +41,8 @@ body {
             left: 0;
             right: 0;
         }
+    }
+    .mat-tab-label .mat-tab-label-content {
+        font-size: 14px !important;
     }
 }

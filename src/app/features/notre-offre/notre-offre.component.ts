@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+import 'img-comparison-slider';
 
 @Component({
   selector: 'app-notre-offre',
@@ -10,8 +11,8 @@ export class NotreOffreComponent implements OnInit {
 
   lienvisiteVirtuelle3D!: SafeResourceUrl;
   lienvisiteVirtuelleHD!: SafeResourceUrl;
-  panoramaAvantRetouche!:string;
-  panoramaApresRetouche!:string;
+  Avant!:string;
+  Apres!:string;
 
   constructor(private sanitizer: DomSanitizer) {
     this.lienvisiteVirtuelle3D = this.sanitizer.bypassSecurityTrustResourceUrl("https://my.matterport.com/show/?m=W9ufV4AFQs6");
@@ -19,10 +20,9 @@ export class NotreOffreComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
-    this.panoramaAvantRetouche = "./assets/images/panoBefore.webp";
-    this.panoramaApresRetouche = "./assets/images/panoAfter.webp";
-    //comparaison
+    //liens les s
+    this.Avant = "../assets/img/panoBefore.webp";
+    this.Apres = "../assets/img/panoAfter.webp";
 
   }
 

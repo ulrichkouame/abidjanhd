@@ -3430,6 +3430,11 @@
   "resolved" "https://registry.npmjs.org/image-size/-/image-size-0.5.5.tgz"
   "version" "0.5.5"
 
+"img-comparison-slider@^7.5.2":
+  "integrity" "sha512-c1dMiLfA55jLbUchGOUaRAO89vwyBmi+o6JI2hQITpvzwi8EWh24VI8LJUAo4f0oZnjgnLVymiYPJO9HOABmaQ=="
+  "resolved" "https://registry.npmjs.org/img-comparison-slider/-/img-comparison-slider-7.5.2.tgz"
+  "version" "7.5.2"
+
 "immutable@^4.0.0":
   "integrity" "sha512-zIE9hX70qew5qTUjSS7wi1iwj/l7+m54KWU247nhM3v806UdGj1yDndXj+IOYxxtW9zyLI+xqFNZjTuDaLUqFw=="
   "resolved" "https://registry.npmjs.org/immutable/-/immutable-4.0.0.tgz"

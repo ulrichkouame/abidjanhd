@@ -62,3 +62,12 @@ p.ng-star-inserted {
 }
 
 //pour la comparaison d'images
+img-comparison-slider {
+    --divider-width: 2px;
+    --divider-color: #c0c0c0;
+    --default-handle-opacity: 0.3;
+    width: 100%;
+    img {
+        width: 100%;
+    }
+}
