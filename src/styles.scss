@@ -28,14 +28,15 @@ body {
 }
 
 //responsive iframe & videos
-video {
-    width: 100vw !important;
-}
-
-.slider {
+@media screen and (max-width: 1024px) {
     video {
-        position: absolute;
-        left: 0;
-        right: 0;
+        width: 100vw !important;
+    }
+    .slider {
+        video {
+            position: absolute;
+            left: 0;
+            right: 0;
+        }
     }
 }
