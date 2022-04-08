@@ -36,6 +36,7 @@ import { AngularMaterialModule } from './shared/angular-material.module';
 import { NoopAnimationsModule, BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { SiteLayoutComponent } from './shared/site-layout/site-layout.component';
 
 @NgModule({
   declarations: [
@@ -55,7 +56,8 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     SafePipe,
     SigninComponent,
     SignupComponent,
-    UserProfileComponent
+    UserProfileComponent,
+    SiteLayoutComponent
   ],
   imports: [
     BrowserModule,
