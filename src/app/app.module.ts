@@ -35,6 +35,7 @@ import { UserProfileComponent } from './pages/user-profile/user-profile.componen
 import { AngularMaterialModule } from './shared/angular-material.module';
 import { NoopAnimationsModule, BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 @NgModule({
   declarations: [
@@ -65,7 +66,8 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
     NoopAnimationsModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    FlexLayoutModule
   ],
   providers: [
     { provide: LOCALE_ID, useValue: 'fr-FR'},

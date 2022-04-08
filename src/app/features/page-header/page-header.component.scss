@@ -10,6 +10,25 @@
 }
 */
 
+a {
+  color: rgba(0,0,0,.87);
+  text-decoration: none;
+}
+.menu-right .mat-icon {
+  color: #fff!important;
+}
+.sign-right li {
+  display: block;
+  width: 38%!important;
+}
+.sign-right {
+  float: right;
+  padding-right: 20px;
+}
+.sign-left {
+  display: inline-block;
+  margin-left: 20px;
+}
 $primary:#0c163e;
 $secondary:#61bb45;
 #mobilemenu {

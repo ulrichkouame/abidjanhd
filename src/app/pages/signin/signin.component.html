@@ -1,25 +1,36 @@
-<div class="auth-wrapper">
-  <form class="form-signin" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-      <h3 class="h3 mb-3 font-weight-normal text-center">Sign in</h3>
-      <!-- Errors -->
-      <div *ngIf="errors?.email" class="alert alert-danger mt-3">
+<div class="login">
+  <mat-card>
+    <mat-card-content>
+      <form class="form-signin" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <h2>Connexion</h2>
+        <!-- Errors -->
+        <mat-error *ngIf="errors?.email" class="alert alert-danger mt-3">
           {{ errors?.email }}
-      </div>
-      <div *ngIf="errors?.password" class="alert alert-danger mt-3">
-          {{ errors?.password }}
-      </div>
-      <div *ngIf="errors?.error" class="alert alert-danger mt-3">
-          {{ errors?.error }}
-      </div>
-      <!-- Login -->
-      <div class="form-group">
-          <label>Email address</label>
-          <input type="email" class="form-control" formControlName="email">
-      </div>
-      <div class="form-group">
-          <label>Password</label>
-          <input type="password" class="form-control" formControlName="password">
-      </div>
-      <button type="submit" class="btn btn-block btn-primary">Log in</button>
-  </form>
+        </mat-error>
+        <mat-error *ngIf="errors?.password" class="alert alert-danger mt-3">
+            {{ errors?.password }}
+        </mat-error>
+        <mat-error *ngIf="errors?.error" class="alert alert-danger mt-3">
+            {{ errors?.error }}
+        </mat-error>
+        <!-- Login -->
+        <mat-form-field>
+          <input matInput placeholder="Adresse email" type="email" class="form-control" formControlName="email" required>
+          <mat-error>
+            Veuillez fournir une adresse email valide
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput placeholder="Mot de passe" type="password" class="form-control" formControlName="password" required>
+          <mat-error>
+            Veuillez fournir un mot de passe valide
+          </mat-error>
+        </mat-form-field>
+
+        <button mat-raised-button color="primary" class="btn">Se connecter</button>
+    </form>
+    </mat-card-content>
+  </mat-card>
 </div>
+<app-footer></app-footer>
+

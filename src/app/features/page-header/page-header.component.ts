@@ -34,14 +34,11 @@ export class PageHeaderComponent implements OnInit {
   menumobile() {
     //recuperer la largeur de la fenetre
     this.largeurFenetre = window.innerWidth;
-    console.log(this.largeurFenetre);
     this.largeurFenetre <= 768 ? this.isMobile = true : this.isMobile = false;
-    console.log(this.isMobile);
   }
   toggleur() {
     this.afficher = !this.afficher;
     this.etatdumenu = !this.etatdumenu;
-    console.log(this.afficher);
   }
 
 }
