@@ -9,6 +9,7 @@ import { SigninComponent } from './pages/signin/signin.component';
 import { SignupComponent } from './pages/signup/signup.component';
 import { UserProfileComponent } from './pages/user-profile/user-profile.component';
 import { SiteLayoutComponent } from './shared/site-layout/site-layout.component';
+import { AnnonceComponent } from './pages/annonce/annonce.component';
 
 const routes: Routes = [
   { path: '', component: PageAccueilComponent },
@@ -20,7 +21,8 @@ const routes: Routes = [
     component: SigninComponent
   },
   { path: 'register', component: SignupComponent },
-  { path: 'profile', component: UserProfileComponent }
+  { path: 'profile', component: UserProfileComponent },
+  { path: 'profile/annonce/add', component: AnnonceComponent }
 ];
 
 @NgModule({

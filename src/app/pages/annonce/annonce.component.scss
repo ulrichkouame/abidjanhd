@@ -1,0 +1,23 @@
+mat-card {
+  max-width: 400px;
+  margin: 2em auto;
+  text-align: center;
+}
+
+mat-form-field {
+  display: block;
+  width: 70%;
+  margin: 0 auto;
+}
+
+.annonce {
+  margin: 50px 0 100px 0;
+}
+
+.btn {
+  background-color: #011640;
+  margin: 20px;
+}
+.btn:hover {
+  background-color: #5db443;
+}

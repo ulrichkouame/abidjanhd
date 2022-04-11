@@ -3,29 +3,12 @@ import { Router } from '@angular/router';
 import { AuthService } from '../../core/services/auth.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
 
-export interface PeriodicElement {
-  name: string;
-  position: number;
-  weight: number;
-  symbol: string;
-  action: any;
-}
-
-const ELEMENT_DATA: PeriodicElement[] = [
-  {position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H', action:''},
-  {position: 2, name: 'Helium', weight: 4.0026, symbol: 'He', action:''},
-  {position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li', action:''},
-];
-
 @Component({
-  selector: 'app-user-profile',
-  templateUrl: './user-profile.component.html',
-  styleUrls: ['./user-profile.component.scss']
+  selector: 'app-annonce',
+  templateUrl: './annonce.component.html',
+  styleUrls: ['./annonce.component.scss']
 })
-export class UserProfileComponent implements OnInit {
-
-  displayedColumns: string[] = ['position', 'name', 'weight', 'symbol', 'action'];
-  dataSource = ELEMENT_DATA;
+export class AnnonceComponent implements OnInit {
 
   registerForm: FormGroup;
   errors: any = null;

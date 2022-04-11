@@ -37,6 +37,7 @@ import { NoopAnimationsModule, BrowserAnimationsModule } from '@angular/platform
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { SiteLayoutComponent } from './shared/site-layout/site-layout.component';
+import { AnnonceComponent } from './pages/annonce/annonce.component';
 
 @NgModule({
   declarations: [
@@ -57,7 +58,8 @@ import { SiteLayoutComponent } from './shared/site-layout/site-layout.component'
     SigninComponent,
     SignupComponent,
     UserProfileComponent,
-    SiteLayoutComponent
+    SiteLayoutComponent,
+    AnnonceComponent
   ],
   imports: [
     BrowserModule,
