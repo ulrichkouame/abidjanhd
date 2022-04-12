@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../../core/services/auth.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
@@ -10,6 +10,15 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 })
 export class AnnonceComponent implements OnInit {
 
+  editPosition(Pos: { Lat: number; Lon: number }) {
+    this.registerForm.patchValue({
+      latitude: Pos.Lat,
+      longitude: Pos.Lon
+    });
+
+
+  }
+
   registerForm: FormGroup;
   errors: any = null;
   constructor(
@@ -18,15 +27,26 @@ export class AnnonceComponent implements OnInit {
     public authService: AuthService
   ) {
     this.registerForm = this.fb.group({
-      name: [''],
+      titre: [''],
+      description: [''],
+      categorie: [''],
+      price_min: [''],
+      price_max: [''],
+      lieu: [''],
+      portable: [''],
+      whatsapp: [''],
+      website: [''],
       email: [''],
-      password: [''],
-      password_confirmation: [''],
+      longitude: [''],
+      latitude: [''],
+      lien_visite: [''],
+      file: [''],
+
     });
   }
   ngOnInit() {}
   onSubmit() {
-    this.authService.register(this.registerForm.value).subscribe(
+    /*this.authService.register(this.registerForm.value).subscribe(
       (result) => {
         console.log(result);
       },
@@ -37,7 +57,13 @@ export class AnnonceComponent implements OnInit {
         this.registerForm.reset();
         this.router.navigate(['login']);
       }
-    );
+    );*/
+    this.registerForm.patchValue({
+      longitude: 123,
+      // formControlName2: myValue2 (can be omitted)
+    });
+    console.log(this.registerForm.value);
+    this.registerForm
   }
 
 }

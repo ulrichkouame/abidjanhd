@@ -1,5 +1,5 @@
 mat-card {
-  max-width: 400px;
+  max-width: 600px;
   margin: 2em auto;
   text-align: center;
 }
@@ -17,7 +17,25 @@ mat-form-field {
 .btn {
   background-color: #011640;
   margin: 20px;
+  margin-top: 50px;
 }
 .btn:hover {
   background-color: #5db443;
+}
+
+.divdeux {
+  display: inline-block!important;
+  width: calc(35% - 20px)!important;
+  margin: 0 20px!important;
+}
+
+.adresse-map, .detail-contact, .detail-offre  {
+  margin-top: 40px;
+}
+
+.file {
+  width: 70%;
+  display: inline-block;
+  margin: 0 auto;
+  margin-top: 20px;
 }
