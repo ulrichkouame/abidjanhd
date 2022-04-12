@@ -38,6 +38,8 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { SiteLayoutComponent } from './shared/site-layout/site-layout.component';
 import { AnnonceComponent } from './pages/annonce/annonce.component';
+import { GmapComponent } from './features/gmap/gmap.component';
+import { FileUploadComponent } from './features/file-upload/file-upload.component';
 
 @NgModule({
   declarations: [
@@ -59,7 +61,9 @@ import { AnnonceComponent } from './pages/annonce/annonce.component';
     SignupComponent,
     UserProfileComponent,
     SiteLayoutComponent,
-    AnnonceComponent
+    AnnonceComponent,
+    GmapComponent,
+    FileUploadComponent
   ],
   imports: [
     BrowserModule,
@@ -71,7 +75,7 @@ import { AnnonceComponent } from './pages/annonce/annonce.component';
     BrowserAnimationsModule,
     ReactiveFormsModule,
     FormsModule,
-    FlexLayoutModule
+    FlexLayoutModule,
   ],
   providers: [
     { provide: LOCALE_ID, useValue: 'fr-FR'},

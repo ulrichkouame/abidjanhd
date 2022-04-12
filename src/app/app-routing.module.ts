@@ -10,6 +10,7 @@ import { SignupComponent } from './pages/signup/signup.component';
 import { UserProfileComponent } from './pages/user-profile/user-profile.component';
 import { SiteLayoutComponent } from './shared/site-layout/site-layout.component';
 import { AnnonceComponent } from './pages/annonce/annonce.component';
+import { GmapComponent } from './features/gmap/gmap.component';
 
 const routes: Routes = [
   { path: '', component: PageAccueilComponent },
@@ -20,6 +21,7 @@ const routes: Routes = [
     path: 'login',
     component: SigninComponent
   },
+  { path: 'map', component: GmapComponent },
   { path: 'register', component: SignupComponent },
   { path: 'profile', component: UserProfileComponent },
   { path: 'profile/annonce/add', component: AnnonceComponent }
