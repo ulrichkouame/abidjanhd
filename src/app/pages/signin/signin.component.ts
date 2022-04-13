@@ -28,30 +28,16 @@ export class SigninComponent implements OnInit {
   onSubmit() {
     this.authService.signin(this.loginForm.value).subscribe(
       (result) => {
-
-        if (result.token !== undefined) {
-          this.responseHandler(result);
-
-          this.authState.setAuthState(true);
-          localStorage.setItem('isLogin', 'true');
-
-          this.loginForm.reset();
-          this.router.navigate(['profile']);
-        } else {
-          this.errors = result.error_message;
-        }
-
+        this.responseHandler(result);
       },
       (error) => {
-        this.errors = error.error?.errors.email;
-        console.log(this.errors);
-
+        this.errors = error.error;
       },
-      /*() => {
+      () => {
         this.authState.setAuthState(true);
         this.loginForm.reset();
         this.router.navigate(['profile']);
-      }*/
+      }
     );
   }
   // Handle response

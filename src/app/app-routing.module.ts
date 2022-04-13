@@ -11,7 +11,6 @@ import { UserProfileComponent } from './pages/user-profile/user-profile.componen
 import { SiteLayoutComponent } from './shared/site-layout/site-layout.component';
 import { AnnonceComponent } from './pages/annonce/annonce.component';
 import { GmapComponent } from './features/gmap/gmap.component';
-import { ThanksComponent } from './pages/thanks/thanks.component';
 
 const routes: Routes = [
   { path: '', component: PageAccueilComponent },
@@ -25,8 +24,7 @@ const routes: Routes = [
   { path: 'map', component: GmapComponent },
   { path: 'register', component: SignupComponent },
   { path: 'profile', component: UserProfileComponent },
-  { path: 'profile/annonce/add', component: AnnonceComponent },
-  { path: 'register/thanks', component: ThanksComponent }
+  { path: 'profile/annonce/add', component: AnnonceComponent }
 ];
 
 @NgModule({

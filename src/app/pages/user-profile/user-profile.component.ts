@@ -41,27 +41,7 @@ export class UserProfileComponent implements OnInit {
       password_confirmation: [''],
     });
   }
-  ngOnInit() {
-    this.authService.profileUser().subscribe(
-      (result) => {
-
-        console.log(result);
-
-
-      },
-      (error) => {
-        console.log(error);
-
-      },
-      /*() => {
-        this.authState.setAuthState(true);
-        this.loginForm.reset();
-        this.router.navigate(['profile']);
-      }*/
-    );
-
-
-  }
+  ngOnInit() {}
   onSubmit() {
     this.authService.register(this.registerForm.value).subscribe(
       (result) => {

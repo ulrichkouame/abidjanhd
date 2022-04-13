@@ -27,16 +27,14 @@ export class SignupComponent implements OnInit {
     this.authService.register(this.registerForm.value).subscribe(
       (result) => {
         console.log(result);
-        this.authService.sendMail(this.registerForm.value);
       },
       (error) => {
         this.errors = error.error;
       },
       () => {
         this.registerForm.reset();
-        this.router.navigate(['register/thanks']);
+        this.router.navigate(['login']);
       }
     );
-
   }
 }
