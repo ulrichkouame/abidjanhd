@@ -40,6 +40,7 @@ import { SiteLayoutComponent } from './shared/site-layout/site-layout.component'
 import { AnnonceComponent } from './pages/annonce/annonce.component';
 import { GmapComponent } from './features/gmap/gmap.component';
 import { FileUploadComponent } from './features/file-upload/file-upload.component';
+import { ThanksComponent } from './pages/thanks/thanks.component';
 
 @NgModule({
   declarations: [
@@ -63,7 +64,8 @@ import { FileUploadComponent } from './features/file-upload/file-upload.componen
     SiteLayoutComponent,
     AnnonceComponent,
     GmapComponent,
-    FileUploadComponent
+    FileUploadComponent,
+    ThanksComponent
   ],
   imports: [
     BrowserModule,

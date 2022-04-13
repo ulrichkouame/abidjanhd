@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from 'express';
 
 @Component({
   selector: 'app-page-header',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PageHeaderComponent implements OnInit {
 
-  constructor() {}
+  constructor(public router: Router) {}
 
   //options: any;
   formData: any = new FormData();
@@ -39,6 +40,11 @@ export class PageHeaderComponent implements OnInit {
   toggleur() {
     this.afficher = !this.afficher;
     this.etatdumenu = !this.etatdumenu;
+  }
+  logOut() {
+    localStorage.removeItem('auth_token');
+    localStorage.removeItem('isLogin');
+    //this.router.navigate(['/']);
   }
 
 }
