@@ -12,6 +12,9 @@ export class PageHeaderComponent implements OnInit {
   //options: any;
   formData: any = new FormData();
 
+  //isLogin
+  islogin: boolean = false;
+
   //afficher ou cacher le menu mobile
   largeurFenetre: any;
   isMobile!: boolean;
@@ -30,6 +33,8 @@ export class PageHeaderComponent implements OnInit {
 
     //affichage ou non du menu mobile app
     this.menumobile();
+    //this.isLogin = localStorage.getItem('isLogin') == 'true' ? true : false;
+
   }
   menumobile() {
     //recuperer la largeur de la fenetre
@@ -41,4 +46,7 @@ export class PageHeaderComponent implements OnInit {
     this.etatdumenu = !this.etatdumenu;
   }
 
+  isLogin() {
+    this.islogin = localStorage.getItem('isLogin') == 'true' ? true : false;
+  }
 }

@@ -31,29 +31,29 @@
       </mat-menu>
     </div>
     <div class="sign-right">
-      <button class="menu-right" mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+      <button class="menu-right" mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu" (click)=isLogin()>
         <mat-icon>person</mat-icon>
       </button>
       <mat-menu #menu="matMenu">
-        <button mat-menu-item>
+        <button mat-menu-item *ngIf=!islogin>
           <a routerLink="login" routerLinkActive="active">
             <mat-icon>person_outline</mat-icon>
             <span>Se connecter</span>
           </a>
         </button>
-        <button mat-menu-item>
+        <button mat-menu-item *ngIf=!islogin>
           <a routerLink="register" routerLinkActive="active">
             <mat-icon>person_add</mat-icon>
             <span>S'inscrire</span>
           </a>
         </button>
-        <button mat-menu-item>
+        <button mat-menu-item *ngIf=islogin>
           <a routerLink="profile" routerLinkActive="active">
             <mat-icon>perm_contact_calendar</mat-icon>
             <span>Mon profil</span>
           </a>
         </button>
-        <button mat-menu-item>
+        <button mat-menu-item *ngIf=islogin>
           <mat-icon>exit_to_app</mat-icon>
           <span>Se déconnecter</span>
         </button>
