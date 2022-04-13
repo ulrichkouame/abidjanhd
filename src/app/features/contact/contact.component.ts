@@ -31,7 +31,31 @@ export class ContactComponent implements OnInit {
 	ngOnInit(): void {
 	}
 	onSubmit() {
-		if (this.form.status == "VALID" && this.honeypot.value == "") {
+
+    if (this.form.status == "VALID" && this.honeypot.value == "") {
+      this.isLoading = true;
+      this.submitted = false;
+      this.responseMessage = '';
+      this.http.post('https://formspree.io/f/mknyqbpo', this.form.value, {
+        headers: new HttpHeaders({
+          'Content-Type': 'application/json'
+        })
+      }).subscribe(
+        (response) => {
+          this.isLoading = false;
+          this.submitted = true;
+          this.responseMessage = 'Merci pour votre message !';
+        },
+        (error) => {
+          this.isLoading = false;
+          this.submitted = true;
+          this.responseMessage = 'Une erreur est survenue, veuillez réessayer plus tard.';
+        }
+      );
+    }
+
+
+		/*if (this.form.status == "VALID" && this.honeypot.value == "") {
 			this.form.disable(); // disable the form if it's valid to disable multiple submissions
 			var formData: any = new FormData();
 			formData.append("nom", this.form.controls["nom"].value);
@@ -65,6 +89,6 @@ export class ContactComponent implements OnInit {
 					this.isLoading = false; // re enable the submit button
 				}
 			);
-		}
+		}*/
 	}
 }

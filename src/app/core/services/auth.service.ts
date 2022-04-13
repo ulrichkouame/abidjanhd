@@ -38,5 +38,25 @@ export class AuthService {
     return this.http.get(this.apiUrl+'profile');
   }
 
+  // Send mail
+  sendMail(user: User) {
+
+    this.http.post('https://formspree.io/f/mknyqbpo', user, {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      })
+    }).subscribe(
+      (response) => {
+        console.log(response);
+
+      },
+      (error) => {
+        console.log(error);
+
+      }
+    );
+
+  }
+
 }
 

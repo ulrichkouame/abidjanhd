@@ -10,8 +10,8 @@
         <mat-error *ngIf="errors?.password" class="alert alert-danger mt-3">
             {{ errors?.password }}
         </mat-error>
-        <mat-error *ngIf="errors?.error" class="alert alert-danger mt-3">
-            {{ errors?.error }}
+        <mat-error *ngIf="errors" class="alert alert-danger mt-3">
+            {{ errors }}
         </mat-error>
         <!-- Login -->
         <mat-form-field>
