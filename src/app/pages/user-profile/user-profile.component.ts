@@ -11,6 +11,14 @@ export interface PeriodicElement {
   action: any;
 }
 
+export interface User {
+  name: string,
+  email: string,
+  created_at: string,
+  avatar: string,
+  role_id: string,
+}
+
 const ELEMENT_DATA: PeriodicElement[] = [
   {position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H', action:''},
   {position: 2, name: 'Helium', weight: 4.0026, symbol: 'He', action:''},
@@ -27,21 +35,47 @@ export class UserProfileComponent implements OnInit {
   displayedColumns: string[] = ['position', 'name', 'weight', 'symbol', 'action'];
   dataSource = ELEMENT_DATA;
 
+  user: User = {
+    avatar: "",
+    created_at: "",
+    email: "",
+    name: "",
+    role_id: "",
+  }
+
   registerForm: FormGroup;
   errors: any = null;
   constructor(
     public router: Router,
     public fb: FormBuilder,
-    public authService: AuthService
+    public authService: AuthService,
   ) {
     this.registerForm = this.fb.group({
-      name: [''],
+      avatar: "",
+      created_at: [''],
       email: [''],
-      password: [''],
-      password_confirmation: [''],
+      name: [''],
+      role_id: [''],
     });
   }
-  ngOnInit() {}
+  ngOnInit() {
+    this.authService.profileUser().subscribe(
+      (result) => {
+        this.user = result.data;
+        console.log(result);
+        console.log(this.user);
+
+        this.registerForm.patchValue({
+          longitude: 123,
+          // formControlName2: myValue2 (can be omitted)
+        });
+
+      },
+      (error) => {
+        this.errors = error.error;
+      }
+    );
+  }
   onSubmit() {
     this.authService.register(this.registerForm.value).subscribe(
       (result) => {

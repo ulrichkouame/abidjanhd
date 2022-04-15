@@ -15,8 +15,6 @@ export class AnnonceComponent implements OnInit {
       latitude: Pos.Lat,
       longitude: Pos.Lon
     });
-
-
   }
 
   registerForm: FormGroup;
@@ -40,30 +38,16 @@ export class AnnonceComponent implements OnInit {
       longitude: [''],
       latitude: [''],
       lien_visite: [''],
+      adresse: [''],
       file: [''],
 
     });
   }
   ngOnInit() {}
   onSubmit() {
-    /*this.authService.register(this.registerForm.value).subscribe(
-      (result) => {
-        console.log(result);
-      },
-      (error) => {
-        this.errors = error.error;
-      },
-      () => {
-        this.registerForm.reset();
-        this.router.navigate(['login']);
-      }
-    );*/
-    this.registerForm.patchValue({
-      longitude: 123,
-      // formControlName2: myValue2 (can be omitted)
-    });
+
     console.log(this.registerForm.value);
-    this.registerForm
+    //this.registerForm
   }
 
 }
