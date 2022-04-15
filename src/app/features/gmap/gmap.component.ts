@@ -12,10 +12,10 @@ import { Output } from '@angular/core';
 })
 export class GmapComponent implements OnInit {
 
-  @Output() Pos = new EventEmitter<{Lat:number, Lon: number}>();
+  @Output() Pos = new EventEmitter<{Lat: number, Lon: number, Name: string}>();
 
-  editPosition(Lat: number, Lon: number) {
-    this.Pos.emit({Lat, Lon});
+  editPosition(Lat: number, Lon: number, Name: string) {
+    this.Pos.emit({Lat, Lon, Name});
   }
 
   SearchPlacesForm :NgForm[] =  [];
@@ -33,22 +33,6 @@ export class GmapComponent implements OnInit {
 
   private loadMap() {
     this.initMap();
-  }
-
-  private loadScript(url: any) {
-
-    return new Promise((resolve, reject) => {
-      const script = this.renderer2.createElement('script');
-      script.type = 'text/javascript';
-      script.src = url;
-      script.text = ``;
-      script.async = true;
-      script.defer = true;
-      script.onload = resolve;
-      script.onerror = reject;
-      this.renderer2.appendChild(this.document.head, script);
-    })
-
   }
 
   initMap() {
@@ -72,6 +56,7 @@ export class GmapComponent implements OnInit {
     locationButton.addEventListener("click", () => {
       // Try HTML5 geolocation.
       if (navigator.geolocation) {
+
         navigator.geolocation.getCurrentPosition(
           (position: GeolocationPosition) => {
             const pos = {
@@ -87,7 +72,7 @@ export class GmapComponent implements OnInit {
             map.setCenter(pos);
 
             //Recuperation des informations de l'adresse pour l'inserer dans les champs lat et lon
-            this.editPosition(pos.lat,pos.lng)
+            this.editPosition(pos.lat,pos.lng,'')
 
           },
           () => {
@@ -110,8 +95,13 @@ export class GmapComponent implements OnInit {
       "address_components",
       "geometry",
       "icon",
-      "name"
+      "name",
+      "formatted_address"
     ]);
+
+    autocomplete.setComponentRestrictions({
+      country: ["ci"],
+    });
 
     const infowindow = new google.maps.InfoWindow();
     const infowindowContent = this.document.getElementById("infowindow-content") as HTMLInputElement;
@@ -125,6 +115,8 @@ export class GmapComponent implements OnInit {
       infowindow.close();
       marker.setVisible(false);
       const place = autocomplete.getPlace();
+      console.log(place);
+
 
       if (!place.geometry) {
         // User entered the name of a Place that was not suggested and
@@ -146,7 +138,7 @@ export class GmapComponent implements OnInit {
       let address = "";
 
       //Recuperation des informations de l'adresse pour l'inserer dans les champs lat et lon
-      this.editPosition(place.geometry.location.lat(),place.geometry.location.lng())
+      this.editPosition(place.geometry.location.lat(), place.geometry.location.lng(), place.formatted_address);
 
       if (place.address_components) {
         address = [

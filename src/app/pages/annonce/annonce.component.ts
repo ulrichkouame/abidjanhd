@@ -10,10 +10,11 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 })
 export class AnnonceComponent implements OnInit {
 
-  editPosition(Pos: { Lat: number; Lon: number }) {
+  editPosition(Pos: { Lat: number; Lon: number; Name: string }) {
     this.registerForm.patchValue({
       latitude: Pos.Lat,
-      longitude: Pos.Lon
+      longitude: Pos.Lon,
+      adresse: Pos.Name
     });
   }
 
@@ -39,11 +40,14 @@ export class AnnonceComponent implements OnInit {
       latitude: [''],
       lien_visite: [''],
       adresse: [''],
-      file: [''],
+      image: [''],
 
     });
   }
-  ngOnInit() {}
+  ngOnInit() {
+
+
+  }
   onSubmit() {
 
     console.log(this.registerForm.value);

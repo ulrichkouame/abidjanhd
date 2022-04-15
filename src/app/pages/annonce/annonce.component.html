@@ -82,6 +82,9 @@
 
             <app-gmap (Pos)="editPosition($event)"></app-gmap>
 
+            <mat-form-field>
+              <input matInput placeholder="Adresse" type="text" class="form-control" formControlName="adresse" required>
+            </mat-form-field>
             <mat-form-field class="divdeux">
               <input matInput placeholder="Latitude" type="text" class="form-control" formControlName="latitude" required>
             </mat-form-field>

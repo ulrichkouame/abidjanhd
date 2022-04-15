@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../../core/services/auth.service';
+import { AnnoncesService } from '../../core/services/annonces.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
 
 export interface PeriodicElement {
@@ -49,6 +50,7 @@ export class UserProfileComponent implements OnInit {
     public router: Router,
     public fb: FormBuilder,
     public authService: AuthService,
+    public annonces: AnnoncesService,
   ) {
     this.registerForm = this.fb.group({
       avatar: "",
@@ -62,13 +64,23 @@ export class UserProfileComponent implements OnInit {
     this.authService.profileUser().subscribe(
       (result) => {
         this.user = result.data;
-        console.log(result);
-        console.log(this.user);
 
         this.registerForm.patchValue({
           longitude: 123,
           // formControlName2: myValue2 (can be omitted)
         });
+
+        //Recupertation des annonces
+        this.annonces.getAll().subscribe(
+          (result) => {
+            console.log(result);
+
+          },
+          (error) => {
+            this.errors = error.error;
+          }
+
+        );
 
       },
       (error) => {

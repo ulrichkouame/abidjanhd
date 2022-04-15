@@ -32,6 +32,8 @@ export class PostsService {
         (error) => console.log(error)
       );
 
+    } else {
+      this.getPosts();
     }
 
   };
