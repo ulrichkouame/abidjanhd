@@ -1,78 +1,60 @@
-mat-drawer {
-  margin: 16px;
-  width: 250px;
-  border-right: none;
-  background: #011640;
-  color: white;
-  border-radius: 10px;
-  padding: 16px;
+.left {
+  width: 20%;
   text-align: center;
-}
-
-.content {
-  height: calc(100vh - 100px);
-  border-radius: 10px;
-  margin: 16px;
-  margin-left: 32px;
-
-  display: inline-flex;
-  justify-content: center;
-  align-items: flex-start;
-
-  font-size: 2rem;
-  color: lightgray;
-
-  border: solid gray 1px;
-
-  width: calc(100% - 55px);
-}
-
-mat-drawer-content {
-  height: calc(100vh - 65px);
-}
-
-img {
-  max-width: 60%;
-  text-align: center;
+  background-color: #011640;
+  margin: 10px;
+  border-radius: 4px;
+  padding: 15px;
+  box-shadow: 0 2px 1px -1px #0003, 0 1px 1px #00000024, 0 1px 3px #0000001f;
   display: inline-block;
 }
-
-.mat-card-header {
-  display: block;
+.carte {
+  background-color: #fff;
+  width: 90%;
+  margin: 0 auto;
+  border-radius: 4px;
+  padding: 10px 10px;
+  box-shadow: 0 2px 1px -1px #0003, 0 1px 1px #00000024, 0 1px 3px #0000001f;
 }
-
-.mat-tab-group {
-  width: 100%;
-  padding: 40px;
-}
-
-.contenu-met-tab {
-  text-align: left;
-  margin: 20px 0;
-}
-
-.mat-form-field {
-  margin: 10px;
-}
-
-.supprimer-compte {
-  margin-top: 20px;
-}
-
-.info {
-  color: gray;
-  font-style: italic;
-  font-size: 11px;
+.right {
+  width: calc(80% - 130px);
+  display: inline-block;
+  margin-left: 10px;
+  vertical-align: top;
+  border-radius: 4px;
+  padding: 30px;
+  box-shadow: 0 2px 1px -1px #0003, 0 1px 1px #00000024, 0 1px 3px #0000001f;
+  margin-top: 10px;
 }
 
 .add-annonce {
   text-align: right;
 }
 
-.liste-annonces {
-  margin: 40px 0;
+.mat-elevation-z8 {
+  width: 100%;
 }
 
-table {
-  width: 100%;
+.action {
+  margin: 30px 0;
+}
+
+img {
+  max-width: 60%;
+  text-align: center;
+  display: inline-block;
+  margin: 20px 0;
+}
+
+.carte-header {
+  margin-top:  30px;
+}
+
+@media screen and (max-width:720px) {
+  .left {
+    width: calc(100% - 50px);
+}
+  .right {
+    width: calc(100% - 80px);
+  }
 }
