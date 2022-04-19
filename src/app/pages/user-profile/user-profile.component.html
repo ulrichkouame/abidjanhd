@@ -41,33 +41,47 @@
   <div class="liste-annonces">
     <h2>Liste des annonces</h2>
 
-    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    <table mat-table [dataSource]="annonces" class="mat-elevation-z8">
 
       <!--- Note that these columns can be defined in any order.
             The actual rendered columns are set as a property on the row definition" -->
 
-      <!-- Position Column -->
-      <ng-container matColumnDef="position">
-        <th mat-header-cell *matHeaderCellDef> No. </th>
-        <td mat-cell *matCellDef="let element"> {{element.position}} </td>
+      <!-- Image Column -->
+      <ng-container matColumnDef="image">
+        <th mat-header-cell *matHeaderCellDef> Image </th>
+        <td mat-cell *matCellDef="let element">
+          <img width="64" src="https://abidjanhd.bigfive.dev/storage/{{element.image}}" alt="{{element.title}}" onerror="this.src='assets/img/placeholder.webp'" />
+        </td>
       </ng-container>
 
-      <!-- Name Column -->
-      <ng-container matColumnDef="name">
-        <th mat-header-cell *matHeaderCellDef> Name </th>
-        <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+      <!-- Titre Column -->
+      <ng-container matColumnDef="titre">
+        <th mat-header-cell *matHeaderCellDef> Titre </th>
+        <td mat-cell *matCellDef="let element"> {{element.titre}} </td>
       </ng-container>
 
-      <!-- Weight Column -->
-      <ng-container matColumnDef="weight">
-        <th mat-header-cell *matHeaderCellDef> Weight </th>
-        <td mat-cell *matCellDef="let element"> {{element.weight}} </td>
+      <!-- Status Column -->
+      <ng-container matColumnDef="status">
+        <th mat-header-cell *matHeaderCellDef> Status </th>
+        <td mat-cell *matCellDef="let element"> {{element.status}} </td>
       </ng-container>
 
-      <!-- Symbol Column -->
-      <ng-container matColumnDef="symbol">
-        <th mat-header-cell *matHeaderCellDef> Symbol </th>
-        <td mat-cell *matCellDef="let element"> {{element.symbol}} </td>
+      <!-- Featured Column -->
+      <ng-container matColumnDef="featured">
+        <th mat-header-cell *matHeaderCellDef> En vedette </th>
+        <td mat-cell *matCellDef="let element"> {{element.featured ? 'Oui' : 'Non'}} </td>
+      </ng-container>
+
+      <!-- Lieu Column -->
+      <ng-container matColumnDef="lieu">
+        <th mat-header-cell *matHeaderCellDef> Lieu </th>
+        <td mat-cell *matCellDef="let element"> {{element.lieu}} </td>
+      </ng-container>
+
+      <!-- Categorie Column -->
+      <ng-container matColumnDef="categorie">
+        <th mat-header-cell *matHeaderCellDef> Categorie </th>
+        <td mat-cell *matCellDef="let element"> {{element.categorie}} </td>
       </ng-container>
 
       <!-- Action Column -->

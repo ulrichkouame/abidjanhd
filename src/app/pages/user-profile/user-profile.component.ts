@@ -4,12 +4,34 @@ import { AuthService } from '../../core/services/auth.service';
 import { AnnoncesService } from '../../core/services/annonces.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
 
-export interface PeriodicElement {
-  name: string;
-  position: number;
-  weight: number;
-  symbol: string;
-  action: any;
+export interface Annonces {
+  adresse: string
+  author_id: number;
+  categorie: string;
+  category_id: number;
+  created_at: string;
+  description: string;
+  email: string;
+  featured: boolean;
+  id: number;
+  id_bien: number;
+  image: string;
+  latitude: number;
+  lien_visite: string;
+  lieu: string;
+  longitude: number;
+  meta_description: string;
+  meta_keywords: string;
+  portable: string;
+  price_max: number;
+  price_min: number;
+  seo_title: string;
+  slug: string;
+  status: string;
+  titre: string;
+  updated_at: string;
+  website: string;
+  whatsapp: string;
 }
 
 export interface User {
@@ -20,12 +42,6 @@ export interface User {
   role_id: string,
 }
 
-const ELEMENT_DATA: PeriodicElement[] = [
-  {position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H', action:''},
-  {position: 2, name: 'Helium', weight: 4.0026, symbol: 'He', action:''},
-  {position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li', action:''},
-];
-
 @Component({
   selector: 'app-user-profile',
   templateUrl: './user-profile.component.html',
@@ -33,8 +49,9 @@ const ELEMENT_DATA: PeriodicElement[] = [
 })
 export class UserProfileComponent implements OnInit {
 
-  displayedColumns: string[] = ['position', 'name', 'weight', 'symbol', 'action'];
-  dataSource = ELEMENT_DATA;
+  displayedColumns: string[] = ['image', 'titre', 'status', 'featured', 'lieu', 'categorie', 'action'];
+
+  annonces: Annonces[] = [];
 
   user: User = {
     avatar: "",
@@ -44,13 +61,14 @@ export class UserProfileComponent implements OnInit {
     role_id: "",
   }
 
+
   registerForm: FormGroup;
   errors: any = null;
   constructor(
     public router: Router,
     public fb: FormBuilder,
     public authService: AuthService,
-    public annonces: AnnoncesService,
+    public annonceservice: AnnoncesService,
   ) {
     this.registerForm = this.fb.group({
       avatar: "",
@@ -71,10 +89,9 @@ export class UserProfileComponent implements OnInit {
         });
 
         //Recupertation des annonces
-        this.annonces.getAll().subscribe(
+        this.annonceservice.getAll().subscribe(
           (result) => {
-            console.log(result);
-
+            this.annonces = result.data;
           },
           (error) => {
             this.errors = error.error;
@@ -85,20 +102,6 @@ export class UserProfileComponent implements OnInit {
       },
       (error) => {
         this.errors = error.error;
-      }
-    );
-  }
-  onSubmit() {
-    this.authService.register(this.registerForm.value).subscribe(
-      (result) => {
-        console.log(result);
-      },
-      (error) => {
-        this.errors = error.error;
-      },
-      () => {
-        this.registerForm.reset();
-        this.router.navigate(['login']);
       }
     );
   }
