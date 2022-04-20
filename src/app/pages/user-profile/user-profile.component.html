@@ -104,15 +104,16 @@
       <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>
 
-    <mat-paginator [pageSizeOptions]="[1, 5, 10, 20]"
+    <mat-paginator
       showFirstLastButtons
-      aria-label="Select page of periodic elements">
+      [length]="pagemeta.to"
+      [pageSize]="pagemeta.total"
+      [pageSizeOptions]="[1, 5, 10, 25, 100]"
+      (page)="pagemeta.current_page"
+      aria-label="Select page">
     </mat-paginator>
 
   </div>
 
-  Visualisation d'une annonce<br>
-  Modification d'une annonce<br>
-  Suppression d'une annonce<br>
 </div>
 

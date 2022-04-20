@@ -52,6 +52,7 @@ export class UserProfileComponent implements OnInit {
   displayedColumns: string[] = ['image', 'titre', 'status', 'featured', 'lieu', 'categorie', 'action'];
 
   annonces: Annonces[] = [];
+  pagemeta: any = {};
 
   user: User = {
     avatar: "",
@@ -92,6 +93,9 @@ export class UserProfileComponent implements OnInit {
         this.annonceservice.getAll().subscribe(
           (result) => {
             this.annonces = result.data;
+            this.pagemeta = result.meta;
+            console.log(this.pagemeta);
+
           },
           (error) => {
             this.errors = error.error;
