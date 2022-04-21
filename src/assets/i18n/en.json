@@ -1,0 +1,11 @@
+{
+  "tophome": {
+      "titre": "Rue des Carrossiers",
+      "description": "Immeuble Habitat Africain"
+  },
+  "menu": {
+    "accueil": "Home",
+    "micasa": "MiCasa",
+    "contact": "Contact"
+  }
+}

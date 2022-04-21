@@ -1,9 +1,9 @@
 <nav>
   <ul>
     <div *ngIf="!isMobile">
-      <li><a mat-button routerLink="" routerLinkActive="active">Accueil</a></li>
-      <li><a mat-button routerLink="micasa" routerLinkActive="active">MiCasa</a></li>
-      <li><a mat-button routerLink="contact" routerLinkActive="active">Contactez nous</a></li>
+      <li><a mat-button routerLink="" routerLinkActive="active">{{ 'menu.accueil' | translate }}</a></li>
+      <li><a mat-button routerLink="micasa" routerLinkActive="active">{{ 'menu.micasa' | translate }}</a></li>
+      <li><a mat-button routerLink="contact" routerLinkActive="active">{{ 'menu.contact' | translate }}</a></li>
     </div>
     <div *ngIf="isMobile" class="sign-left">
       <button class="menu-right" mat-icon-button [matMenuTriggerFor]="menu" aria-label="Menu left mobile">
