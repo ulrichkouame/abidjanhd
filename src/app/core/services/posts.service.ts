@@ -17,8 +17,8 @@ export class PostsService {
   constructor(
     private http : HttpClient,
     ) {
-    this.formData.append("email", 'henri@bigfiveabidjan.com');
-    this.formData.append("password", 'CL9tdjV24');
+    this.formData.append("email", 'ulrich@bigfiveabidjan.com');
+    this.formData.append("password", '12345678');
   }
 
   connectServer() {
