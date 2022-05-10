@@ -42,11 +42,6 @@ import { GmapComponent } from './features/gmap/gmap.component';
 import { FileUploadComponent } from './features/file-upload/file-upload.component';
 import { ThanksComponent } from './pages/thanks/thanks.component';
 
-// import ngx-translate and the http loader
-import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
-import {TranslateHttpLoader} from '@ngx-translate/http-loader';
-import {HttpClient, HttpClientModule} from '@angular/common/http';
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -83,14 +78,6 @@ import {HttpClient, HttpClientModule} from '@angular/common/http';
     ReactiveFormsModule,
     FormsModule,
     FlexLayoutModule,
-    HttpClientModule,
-    TranslateModule.forRoot({
-      loader: {
-          provide: TranslateLoader,
-          useFactory: HttpLoaderFactory,
-          deps: [HttpClient]
-      }
-    })
   ],
   providers: [
     { provide: LOCALE_ID, useValue: 'fr-FR'},
@@ -100,8 +87,3 @@ import {HttpClient, HttpClientModule} from '@angular/common/http';
 
 })
 export class AppModule { }
-
-// required for AOT compilation
-export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
-  return new TranslateHttpLoader(http);
-}
