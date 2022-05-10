@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { ContactModel } from './model.ts/contact-model';
+import { ContactModel } from './core/model.ts/contact-model';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators'
 import { HttpHeaders } from '@angular/common/http'

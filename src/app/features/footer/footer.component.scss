@@ -1,0 +1,51 @@
+.footer {
+  background-color: #000;
+}
+.section-footer {
+  width: 1140px;
+  margin: 0 auto;
+  padding: 40px 0;
+}
+.section-gauche,
+.section-droite {
+  width: 50%;
+  display: inline-block;
+}
+
+img {
+  max-width: 200px;
+}
+
+h3 {
+  font-size: 24px;
+  color: #ffffff;
+}
+p {
+  color: #ffffff;
+  font-size: 16px;
+  line-height: 1.8;
+  font-weight: 300;
+}
+.section-droite {
+  vertical-align: top;
+  margin-top: 20px;
+}
+.section-droite a {
+  text-decoration: none;
+  color: #ffffff;
+}
+.section-droite a span {
+  display: inline-block;
+  color: #60ba45;
+}
+
+@media screen and (max-width: 600px) {
+  .section-footer {
+    width: 100%;
+  }
+  .section-gauche, .section-droite {
+    width: 100%;
+    text-align: center;
+  }
+
+}

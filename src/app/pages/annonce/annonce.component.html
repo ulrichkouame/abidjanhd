@@ -1,0 +1,117 @@
+<div class="annonce">
+  <mat-card>
+    <mat-card-content>
+      <form class="form-signin" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+        <h2>ANNONCE</h2>
+        <!-- Errors -->
+        <mat-error *ngIf="errors?.name" class="alert alert-danger mt-3">
+          {{ errors?.name }}
+        </mat-error>
+        <mat-error *ngIf="errors?.email" class="alert alert-danger mt-3">
+          {{ errors?.email }}
+        </mat-error>
+        <mat-error *ngIf="errors?.password" class="alert alert-danger mt-3">
+          {{ errors?.password }}
+        </mat-error>
+        <mat-error *ngIf="errors?.password_confirmation" class="alert alert-danger mt-3">
+          {{ errors?.password_confirmation }}
+        </mat-error>
+        <!-- Login -->
+        <mat-form-field>
+          <mat-label>Titre de l'annonce</mat-label>
+          <input matInput placeholder="Saisissez le titre" type="text" class="form-control" formControlName="titre" required>
+          <mat-error>
+            Veuillez fournir un titre à l'annonce
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+          <mat-label>Descriptiion</mat-label>
+          <textarea matInput placeholder="Information détaillée sur votre annonce." formControlName="description" required></textarea>
+        </mat-form-field>
+        <div class="detail-offre">
+          <h3>Détail de l'offre</h3>
+          <mat-form-field>
+            <mat-label>Catégorie</mat-label>
+            <select matNativeControl formControlName="categorie" required>
+              <option value="">Selectionnez une catégorie</option>
+              <option value="bureaux">Bureaux</option>
+              <option value="appartement">Appartement</option>
+              <option value="villa">Villa</option>
+            </select>
+          </mat-form-field>
+          <mat-form-field class="divdeux">
+            <mat-label>Prix min</mat-label>
+            <input matInput placeholder="Prix minimium" type="number" class="form-control" formControlName="price_min" required>
+          </mat-form-field>
+          <mat-form-field class="divdeux">
+            <mat-label>Prix max</mat-label>
+            <input matInput placeholder="Prix maximium" type="number" class="form-control" formControlName="price_max" required>
+          </mat-form-field>
+        </div>
+        <div class="detail-contact">
+          <h3>Contact</h3>
+          <mat-form-field class="divdeux">
+            <mat-label>Lieu</mat-label>
+            <select matNativeControl formControlName="lieu"  required>
+              <option value="">Selectionnez un lieu</option>
+              <option value="Cocody">Cocody</option>
+              <option value="Treichville">Treichville</option>
+              <option value="Plateau">Plateau</option>
+            </select>
+          </mat-form-field>
+          <mat-form-field class="divdeux">
+            <mat-label>Téléphone portable</mat-label>
+            <input matInput placeholder="Téléphone portable" type="number" class="form-control" formControlName="portable" required>
+          </mat-form-field>
+          <mat-form-field class="divdeux">
+            <mat-label>WhatsApp</mat-label>
+            <input matInput placeholder="WhatsApp" type="number" class="form-control" formControlName="whatsapp" required>
+          </mat-form-field>
+          <mat-form-field class="divdeux">
+            <mat-label>Site web</mat-label>
+            <input matInput placeholder="Site web" type="text" class="form-control" formControlName="website" required>
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput placeholder="Adresse email" type="email" class="form-control" formControlName="email" required>
+            <mat-error>
+              Veuillez fournir une adresse email valide
+            </mat-error>
+          </mat-form-field>
+          <div class="adresse-map">
+            <h3>Localisation</h3>
+
+            <app-gmap (Pos)="editPosition($event)"></app-gmap>
+
+            <mat-form-field>
+              <input matInput placeholder="Adresse" type="text" class="form-control" formControlName="adresse" required>
+            </mat-form-field>
+            <mat-form-field class="divdeux">
+              <input matInput placeholder="Latitude" type="text" class="form-control" formControlName="latitude" required>
+            </mat-form-field>
+            <mat-form-field class="divdeux">
+              <input matInput placeholder="Longitude" type="text" class="form-control" formControlName="longitude" required>
+            </mat-form-field>
+
+
+          </div>
+        </div>
+        <div class="autre information">
+          <mat-form-field>
+            <mat-label>Lien visite HD/3D</mat-label>
+            <input matInput placeholder="Lien visite HD ou 3D" type="text" class="form-control" formControlName="lien_visite" required>
+            <mat-error>
+              Veuillez fournir un lien valide
+            </mat-error>
+          </mat-form-field>
+          <div class="file">
+            <label>Image mise en avant</label>
+            <app-file-upload></app-file-upload>
+          </div>
+        </div>
+
+        <button mat-raised-button color="primary" class="btn">Ajouter l'annonce</button>
+    </form>
+    </mat-card-content>
+  </mat-card>
+</div>
+

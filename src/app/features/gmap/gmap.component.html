@@ -1,0 +1,44 @@
+<style type="text/css">
+  #map {
+    height: 250px;
+  }
+
+  #infowindow-content .title {
+    font-weight: bold;
+  }
+
+  #infowindow-content {
+    display: none;
+  }
+
+  #map #infowindow-content {
+    display: inline;
+  }
+
+</style>
+
+<div class="container" role="main">
+  <form class="form-horizontal" #SearchPlacesForm="ngForm">
+
+    <div class="form-group">
+      <label for="txtSearchPlaces">Lieu : </label>
+      <input type="text" class="form-control" id="txtSearchPlaces" name="txtSearchPlaces" #txtSearchPlaces="ngModel"
+          [(ngModel)]="shippingAddress" placeholder="Nom du lieu à rechercher sur Gmap.">
+    </div>
+
+  </form>
+
+  <div class="row">
+    <div class="col-md-12 my-4">
+      <div id="map"></div>
+      <div id="infowindow-content">
+        <img src="" width="16" height="16" id="place-icon" />
+        <span id="place-name" class="title"></span><br />
+        <span id="place-address"></span>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<router-outlet></router-outlet>

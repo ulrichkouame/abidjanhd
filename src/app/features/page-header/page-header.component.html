@@ -1,0 +1,65 @@
+<nav>
+  <ul>
+    <div *ngIf="!isMobile">
+      <li><a mat-button routerLink="" routerLinkActive="active">Accueil</a></li>
+      <li><a mat-button routerLink="micasa" routerLinkActive="active">MiCasa</a></li>
+      <li><a mat-button routerLink="contact" routerLinkActive="active">Contactez nous</a></li>
+    </div>
+    <div *ngIf="isMobile" class="sign-left">
+      <button class="menu-right" mat-icon-button [matMenuTriggerFor]="menu" aria-label="Menu left mobile">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item>
+          <a routerLink="" routerLinkActive="active">
+            <mat-icon>home</mat-icon>
+            <span>Accueil</span>
+          </a>
+        </button>
+        <button mat-menu-item>
+          <a routerLink="micasa" routerLinkActive="active">
+            <mat-icon>map</mat-icon>
+            <span>MiCasa</span>
+          </a>
+        </button>
+        <button mat-menu-item>
+          <a routerLink="contact" routerLinkActive="active">
+            <mat-icon>call</mat-icon>
+            <span>Contactez nous</span>
+          </a>
+        </button>
+      </mat-menu>
+    </div>
+    <div class="sign-right">
+      <button class="menu-right" mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu" (click)=isLogin()>
+        <mat-icon>person</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item *ngIf=!islogin>
+          <a routerLink="login" routerLinkActive="active">
+            <mat-icon>person_outline</mat-icon>
+            <span>Se connecter</span>
+          </a>
+        </button>
+        <button mat-menu-item *ngIf=!islogin>
+          <a routerLink="register" routerLinkActive="active">
+            <mat-icon>person_add</mat-icon>
+            <span>S'inscrire</span>
+          </a>
+        </button>
+        <button mat-menu-item *ngIf=islogin>
+          <a routerLink="profile" routerLinkActive="active">
+            <mat-icon>perm_contact_calendar</mat-icon>
+            <span>Mon profil</span>
+          </a>
+        </button>
+        <button mat-menu-item *ngIf=islogin>
+          <mat-icon>exit_to_app</mat-icon>
+          <span>Se déconnecter</span>
+        </button>
+      </mat-menu>
+    </div>
+
+  </ul>
+</nav>
+

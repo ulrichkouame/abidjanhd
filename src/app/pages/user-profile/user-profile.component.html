@@ -1,0 +1,119 @@
+
+<div class="left">
+  <div class="carte">
+    <div class="carte-header">
+      <h2>{{user.name}}</h2>
+      <h3>{{user.email}}</h3>
+    </div>
+    <div class="carte-body">
+      <img class="user_avatar" src="https://abidjanhd.bigfive.dev/storage/{{user.avatar}}" alt="Avatar">
+      <p>
+        Crée le : {{user.created_at | date: 'd MMMM y':'fr-FR'}}
+      </p>
+    </div>
+  </div>
+  <div class="action">
+    <a routerLink="" routerLinkActive="active">
+      <button mat-raised-button>
+        <mat-icon>edit</mat-icon>
+        <span>MODIFIER LE PROFIL</span>
+      </button>
+    </a>
+    <br><br>
+    <a routerLink="" routerLinkActive="active">
+      <button mat-raised-button>
+        <mat-icon>edit</mat-icon>
+        <span>MODIFIER LE MOT DE PASSE</span>
+      </button>
+    </a>
+  </div>
+</div>
+<div class="right">
+  <div class="add-annonce">
+    <a routerLink="annonce/add">
+      <button mat-raised-button color="warn" class="btn">
+        <mat-icon>add</mat-icon>
+        Ajouter une annonce
+      </button>
+    </a>
+
+  </div>
+  <div class="liste-annonces">
+    <h2>Liste des annonces</h2>
+
+    <table mat-table [dataSource]="annonces" class="mat-elevation-z8">
+
+      <!--- Note that these columns can be defined in any order.
+            The actual rendered columns are set as a property on the row definition" -->
+
+      <!-- Image Column -->
+      <ng-container matColumnDef="image">
+        <th mat-header-cell *matHeaderCellDef> Image </th>
+        <td mat-cell *matCellDef="let element">
+          <img width="64" src="https://abidjanhd.bigfive.dev/storage/{{element.image}}" alt="{{element.title}}" onerror="this.src='assets/img/placeholder.webp'" />
+        </td>
+      </ng-container>
+
+      <!-- Titre Column -->
+      <ng-container matColumnDef="titre">
+        <th mat-header-cell *matHeaderCellDef> Titre </th>
+        <td mat-cell *matCellDef="let element"> {{element.titre}} </td>
+      </ng-container>
+
+      <!-- Status Column -->
+      <ng-container matColumnDef="status">
+        <th mat-header-cell *matHeaderCellDef> Status </th>
+        <td mat-cell *matCellDef="let element"> {{element.status}} </td>
+      </ng-container>
+
+      <!-- Featured Column -->
+      <ng-container matColumnDef="featured">
+        <th mat-header-cell *matHeaderCellDef> En vedette </th>
+        <td mat-cell *matCellDef="let element"> {{element.featured ? 'Oui' : 'Non'}} </td>
+      </ng-container>
+
+      <!-- Lieu Column -->
+      <ng-container matColumnDef="lieu">
+        <th mat-header-cell *matHeaderCellDef> Lieu </th>
+        <td mat-cell *matCellDef="let element"> {{element.lieu}} </td>
+      </ng-container>
+
+      <!-- Categorie Column -->
+      <ng-container matColumnDef="categorie">
+        <th mat-header-cell *matHeaderCellDef> Categorie </th>
+        <td mat-cell *matCellDef="let element"> {{element.categorie}} </td>
+      </ng-container>
+
+      <!-- Action Column -->
+      <ng-container matColumnDef="action">
+        <th mat-header-cell *matHeaderCellDef> Action </th>
+        <td mat-cell *matCellDef="let element">
+          <button mat-icon-button color="accent" class="btn">
+            <mat-icon>remove_red_eye</mat-icon>
+          </button>
+          <button mat-icon-button color="primary" class="btn">
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button mat-icon-button color="warn" class="btn">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+
+    <mat-paginator
+      showFirstLastButtons
+      [length]="pagemeta.to"
+      [pageSize]="pagemeta.total"
+      [pageSizeOptions]="[1, 5, 10, 25, 100]"
+      (page)="pagemeta.current_page"
+      aria-label="Select page">
+    </mat-paginator>
+
+  </div>
+
+</div>
+
