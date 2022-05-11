@@ -2,6 +2,8 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../../core/services/auth.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { AnnoncesService } from '../../core/services/annonces.service';
+import {MatDialog, MatDialogRef} from '@angular/material/dialog';
 
 @Component({
   selector: 'app-annonce',
@@ -23,10 +25,12 @@ export class AnnonceComponent implements OnInit {
   constructor(
     public router: Router,
     public fb: FormBuilder,
-    public authService: AuthService
+    public authService: AuthService,
+    public annonce: AnnoncesService,
+    public dialog: MatDialog,
   ) {
     this.registerForm = this.fb.group({
-      titre: [''],
+      title: [''],
       description: [''],
       categorie: [''],
       price_min: [''],
@@ -41,6 +45,7 @@ export class AnnonceComponent implements OnInit {
       lien_visite: [''],
       adresse: [''],
       image: [''],
+      status: ['EN ATTENTE'],
 
     });
   }
@@ -52,6 +57,35 @@ export class AnnonceComponent implements OnInit {
 
     console.log(this.registerForm.value);
     //this.registerForm
+
+    //Recupertation des annonces
+    this.annonce.create(this.registerForm.value).subscribe(
+      (result) => {
+        console.log(result);
+        this.dialog.open(DialogueAnnonceAjouter);
+      },
+      (error) => {
+        this.errors = error.error;
+      }
+
+    );
   }
 
+}
+
+@Component({
+  selector: 'annonce-ajouter',
+  templateUrl: 'annonce-ajouter.html',
+})
+export class DialogueAnnonceAjouter {
+
+  constructor(
+    public router: Router,
+    public dialogRef: MatDialogRef<DialogueAnnonceAjouter>,
+  ) { }
+
+  returnHome(): void {
+    this.dialogRef.close();
+    this.router.navigate(['/profile']);
+  }
 }

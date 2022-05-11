@@ -42,5 +42,10 @@ export class AnnoncesService {
     return this.http.post(this.apiUrl+id, user);
   }
 
+  // Post annonce
+  create(data: any): Observable<any> {
+    return this.http.post(this.apiUrl, data);
+  }
+
 }
 

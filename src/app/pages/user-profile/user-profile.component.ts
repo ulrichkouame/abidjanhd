@@ -35,6 +35,7 @@ export interface Annonces {
 }
 
 export interface User {
+  id: number,
   name: string,
   email: string,
   created_at: string,
@@ -55,6 +56,7 @@ export class UserProfileComponent implements OnInit {
   pagemeta: any = {};
 
   user: User = {
+    id: 0,
     avatar: "",
     created_at: "",
     email: "",
@@ -83,18 +85,21 @@ export class UserProfileComponent implements OnInit {
     this.authService.profileUser().subscribe(
       (result) => {
         this.user = result.data;
-
-        this.registerForm.patchValue({
-          longitude: 123,
-          // formControlName2: myValue2 (can be omitted)
-        });
+        const user_id = this.user.id;
 
         //Recupertation des annonces
         this.annonceservice.getAll().subscribe(
-          (result) => {
-            this.annonces = result.data;
-            this.pagemeta = result.meta;
+          (response) => {
+            this.annonces = response.data;
+            this.pagemeta = response.meta;
             console.log(this.pagemeta);
+
+
+            //Filter online this user annonces
+            const userAnnonces = this.annonces.filter(post => post.author_id == user_id);
+            this.annonces = userAnnonces;
+
+            this.pagemeta.total = this.annonces.length;
 
           },
           (error) => {
