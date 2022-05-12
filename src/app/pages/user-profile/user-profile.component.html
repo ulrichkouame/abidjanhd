@@ -88,13 +88,13 @@
       <ng-container matColumnDef="action">
         <th mat-header-cell *matHeaderCellDef> Action </th>
         <td mat-cell *matCellDef="let element">
-          <button mat-icon-button color="accent" class="btn">
+          <button mat-icon-button color="accent" class="btn" routerLink="/micasa/{{element.id}}">
             <mat-icon>remove_red_eye</mat-icon>
           </button>
-          <button mat-icon-button color="primary" class="btn">
+          <button mat-icon-button color="primary" class="btn" routerLink="/profile/annonce/edit/{{element.id}}">
             <mat-icon>edit</mat-icon>
           </button>
-          <button mat-icon-button color="warn" class="btn">
+          <button mat-icon-button color="warn" class="btn" (click)="alertConfirmation(element.id)">
             <mat-icon>delete</mat-icon>
           </button>
         </td>

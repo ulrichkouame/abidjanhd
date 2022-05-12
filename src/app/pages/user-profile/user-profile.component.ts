@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { AuthService } from '../../core/services/auth.service';
 import { AnnoncesService } from '../../core/services/annonces.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import Swal from 'sweetalert2';
 
 export interface Annonces {
   adresse: string
@@ -55,6 +56,8 @@ export class UserProfileComponent implements OnInit {
   annonces: Annonces[] = [];
   pagemeta: any = {};
 
+  user_id: number = 0;
+
   user: User = {
     id: 0,
     avatar: "",
@@ -81,24 +84,63 @@ export class UserProfileComponent implements OnInit {
       role_id: [''],
     });
   }
+
+  delete(id: number) {
+    this.annonceservice.delete(id).subscribe(
+      (response) => {
+        console.log(response);
+        if (response.message_succes == "Succès") {
+          this.userAnnonces(this.user_id);
+        }
+      },
+      (error) => {
+        this.errors = error.error;
+      }
+    );
+
+  }
+
+  //Recupertation des annonces de user
+  userAnnonces(id: number) {
+
+    this.annonceservice.myposts(id).subscribe(
+      (response) => {
+        this.annonces = response.data;
+      }
+    );
+  }
+
   ngOnInit() {
     this.authService.profileUser().subscribe(
       (result) => {
         this.user = result.data;
-        const user_id = this.user.id;
+        this.user_id = this.user.id;
 
-        //Recupertation des annonces de user
-        this.annonceservice.myposts(user_id).subscribe(
-          (response) => {
-            this.annonces = response.data;
-          }
-        );
+        this.userAnnonces(this.user_id);
 
       },
       (error) => {
         this.errors = error.error;
       }
     );
+  }
+
+  alertConfirmation(id: number) {
+    Swal.fire({
+      title: 'Êtes-vous sûr ?',
+      text: 'Ce processus est irréversible.',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Oui, vas y.',
+      cancelButtonText: 'Non, laisse-moi réfléchir',
+    }).then((result) => {
+      if (result.value) {
+        Swal.fire('Supprimé !', 'Annonce supprimée avec succès.', 'success');
+        this.delete(id);
+      } else if (result.dismiss === Swal.DismissReason.cancel) {
+        Swal.fire('Annulé', 'Annonce toujours dans notre base de données.)', 'error');
+      }
+    });
   }
 
 }

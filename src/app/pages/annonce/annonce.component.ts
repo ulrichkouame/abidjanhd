@@ -4,6 +4,7 @@ import { AuthService } from '../../core/services/auth.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { AnnoncesService } from '../../core/services/annonces.service';
 import {MatDialog, MatDialogRef} from '@angular/material/dialog';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-annonce',
@@ -11,6 +12,9 @@ import {MatDialog, MatDialogRef} from '@angular/material/dialog';
   styleUrls: ['./annonce.component.scss']
 })
 export class AnnonceComponent implements OnInit {
+
+  isAdd: boolean = true;
+  annonce_id: string = '';
 
   editPosition(Pos: { Lat: number; Lon: number; Name: string }) {
     this.registerForm.patchValue({
@@ -28,6 +32,7 @@ export class AnnonceComponent implements OnInit {
     public authService: AuthService,
     public annonce: AnnoncesService,
     public dialog: MatDialog,
+    private location: Location,
   ) {
     this.registerForm = this.fb.group({
       title: [''],
@@ -50,18 +55,82 @@ export class AnnonceComponent implements OnInit {
     });
   }
   ngOnInit() {
+    //get url path
+    const urlpath = this.location.path();
+    if (urlpath.includes("edit")) {
 
+      this.annonce_id = urlpath.substring(urlpath.lastIndexOf("/")+1);
+
+      if (this.annonce_id != '') {
+        this.isAdd = false;
+        //Recupertation des informations de l'annonce
+        this.annonce.post(this.annonce_id).subscribe(
+          (result) => {
+            const data = result.data;
+
+            this.registerForm.patchValue({
+              title: data.title,
+              description: data.description,
+              categorie: data.categorie,
+              price_min: data.price_min,
+              price_max: data.price_max,
+              lieu: data.lieu,
+              portable: data.portable,
+              whatsapp: data.whatsapp,
+              website: data.website,
+              email: data.email,
+              longitude: data.longitude,
+              latitude: data.latitude,
+              lien_visite: data.lien_visite,
+              adresse: data.adresse,
+              image: data.image,
+              status: data.status,
+            });
+          },
+          (error) => {
+            this.errors = error.error;
+          }
+
+        );
+      }
+    }
 
   }
+
   onSubmit() {
 
     console.log(this.registerForm.value);
-    //this.registerForm
+
+    if (this.isAdd) {
+      this.addAnnonce();
+    } else {
+      this.editAnnonce
+    }
+  }
+
+  addAnnonce() {
+console.log("addAnnonce");
 
     //Recupertation des annonces
     this.annonce.create(this.registerForm.value).subscribe(
       (result) => {
         console.log(result);
+        this.dialog.open(DialogueAnnonceAjouter);
+      },
+      (error) => {
+        this.errors = error.error;
+      }
+
+    );
+  }
+
+  editAnnonce() {
+    console.log("eddAnnonce");
+    //Recupertation des annonces
+    this.annonce.update(this.registerForm.value, this.annonce_id).subscribe(
+      (result) => {
+        console.log(result);
+
         this.dialog.open(DialogueAnnonceAjouter);
       },
       (error) => {

@@ -26,6 +26,7 @@ const routes: Routes = [
   { path: 'register', component: SignupComponent },
   { path: 'profile', component: UserProfileComponent },
   { path: 'profile/annonce/add', component: AnnonceComponent },
+  { path: 'profile/annonce/edit/:id', component: AnnonceComponent },
   { path: 'register/thanks', component: ThanksComponent }
 ];
 
