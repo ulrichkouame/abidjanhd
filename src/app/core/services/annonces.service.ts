@@ -28,6 +28,7 @@ export class AnnoncesService {
 
   // Variables
   apiUrl = 'https://abidjanhd.bigfive.dev/api/posts';
+  apiPostUrl = 'https://abidjanhd.bigfive.dev/api/list/post/author/';
   options: any;
 
   constructor(private http: HttpClient) { }
@@ -35,6 +36,11 @@ export class AnnoncesService {
   // User show
   getAll(): Observable<any> {
     return this.http.get(this.apiUrl);
+  }
+
+  // Get user posts
+  myposts(id: number): Observable<any> {
+    return this.http.get(this.apiPostUrl+id);
   }
 
   // User update

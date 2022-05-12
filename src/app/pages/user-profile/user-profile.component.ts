@@ -87,25 +87,11 @@ export class UserProfileComponent implements OnInit {
         this.user = result.data;
         const user_id = this.user.id;
 
-        //Recupertation des annonces
-        this.annonceservice.getAll().subscribe(
+        //Recupertation des annonces de user
+        this.annonceservice.myposts(user_id).subscribe(
           (response) => {
             this.annonces = response.data;
-            this.pagemeta = response.meta;
-            console.log(this.pagemeta);
-
-
-            //Filter online this user annonces
-            const userAnnonces = this.annonces.filter(post => post.author_id == user_id);
-            this.annonces = userAnnonces;
-
-            this.pagemeta.total = this.annonces.length;
-
-          },
-          (error) => {
-            this.errors = error.error;
           }
-
         );
 
       },
