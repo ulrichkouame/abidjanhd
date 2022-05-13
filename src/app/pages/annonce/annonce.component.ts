@@ -3,8 +3,8 @@ import { Router } from '@angular/router';
 import { AuthService } from '../../core/services/auth.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { AnnoncesService } from '../../core/services/annonces.service';
-import {MatDialog, MatDialogRef} from '@angular/material/dialog';
 import { Location } from '@angular/common';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-annonce',
@@ -31,29 +31,56 @@ export class AnnonceComponent implements OnInit {
     public fb: FormBuilder,
     public authService: AuthService,
     public annonce: AnnoncesService,
-    public dialog: MatDialog,
     private location: Location,
   ) {
     this.registerForm = this.fb.group({
       title: [''],
-      description: [''],
+      body: [''],
       categorie: [''],
       price_min: [''],
       price_max: [''],
       lieu: [''],
-      portable: [''],
+      telephone: [''],
       whatsapp: [''],
       website: [''],
       email: [''],
       longitude: [''],
       latitude: [''],
-      lien_visite: [''],
+      url_vr: [''],
       adresse: [''],
       image: [''],
       status: ['EN ATTENTE'],
 
     });
   }
+
+  public addAnnonce() {
+
+    //Recupertation des annonces
+    this.annonce.create(this.registerForm.value).subscribe(
+      (result) => {
+        this.successNotificationAdd()
+      },
+      (error) => {
+        this.errors = error.error;
+      }
+
+    );
+  }
+
+  public editAnnonce() {
+    //Recupertation des annonces
+    this.annonce.update(this.registerForm.value, this.annonce_id).subscribe(
+      (result) => {
+        this.successNotificationUpdate();
+      },
+      (error) => {
+        this.errors = error.error;
+      }
+
+    );
+  }
+
   ngOnInit() {
     //get url path
     const urlpath = this.location.path();
@@ -70,18 +97,18 @@ export class AnnonceComponent implements OnInit {
 
             this.registerForm.patchValue({
               title: data.title,
-              description: data.description,
+              body: data.body,
               categorie: data.categorie,
               price_min: data.price_min,
               price_max: data.price_max,
               lieu: data.lieu,
-              portable: data.portable,
+              telephone: data.telephone,
               whatsapp: data.whatsapp,
               website: data.website,
               email: data.email,
               longitude: data.longitude,
               latitude: data.latitude,
-              lien_visite: data.lien_visite,
+              url_vr: data.url_vr,
               adresse: data.adresse,
               image: data.image,
               status: data.status,
@@ -99,62 +126,25 @@ export class AnnonceComponent implements OnInit {
 
   onSubmit() {
 
-    console.log(this.registerForm.value);
-
-    if (this.isAdd) {
+    if (this.isAdd == true) {
       this.addAnnonce();
-    } else {
+    }
+    if (this.isAdd == false) {
+      console.log(this.isAdd);
       this.editAnnonce
     }
   }
 
-  addAnnonce() {
-console.log("addAnnonce");
-
-    //Recupertation des annonces
-    this.annonce.create(this.registerForm.value).subscribe(
-      (result) => {
-        console.log(result);
-        this.dialog.open(DialogueAnnonceAjouter);
-      },
-      (error) => {
-        this.errors = error.error;
-      }
-
-    );
+  successNotificationUpdate() {
+    Swal.fire('Mise à jour annonce', 'Votre annonce a été mise à jour avec succès.', 'success').then((result) => {
+      this.router.navigate(['/profile']);
+    });
   }
-
-  editAnnonce() {
-    console.log("eddAnnonce");
-    //Recupertation des annonces
-    this.annonce.update(this.registerForm.value, this.annonce_id).subscribe(
-      (result) => {
-        console.log(result);
-
-        this.dialog.open(DialogueAnnonceAjouter);
-      },
-      (error) => {
-        this.errors = error.error;
-      }
-
-    );
+  successNotificationAdd() {
+    Swal.fire('Annonce', 'Votre annonce a été ajouté avec succès.', 'success').then((result) => {
+      this.router.navigate(['/profile']);
+    });
   }
 
 }
 
-@Component({
-  selector: 'annonce-ajouter',
-  templateUrl: 'annonce-ajouter.html',
-})
-export class DialogueAnnonceAjouter {
-
-  constructor(
-    public router: Router,
-    public dialogRef: MatDialogRef<DialogueAnnonceAjouter>,
-  ) { }
-
-  returnHome(): void {
-    this.dialogRef.close();
-    this.router.navigate(['/profile']);
-  }
-}
