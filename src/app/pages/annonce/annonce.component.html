@@ -1,6 +1,7 @@
 <div class="annonce">
   <mat-card>
     <mat-card-content>
+
       <!-- <form class="form-signin" [formGroup]="registerForm" (ngSubmit)="onSubmit()"> -->
       <form class="form-signin" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
         <h2>ANNONCE</h2>
@@ -27,7 +28,7 @@
         </mat-form-field>
         <mat-form-field class="example-full-width">
           <mat-label>Descriptiion</mat-label>
-          <textarea matInput placeholder="Information détaillée sur votre annonce." formControlName="description" required></textarea>
+          <textarea matInput placeholder="Information détaillée sur votre annonce." formControlName="body" required></textarea>
         </mat-form-field>
         <div class="detail-offre">
           <h3>Détail de l'offre</h3>
@@ -62,7 +63,7 @@
           </mat-form-field>
           <mat-form-field class="divdeux">
             <mat-label>Téléphone portable</mat-label>
-            <input matInput placeholder="Téléphone portable" type="number" class="form-control" formControlName="portable" required>
+            <input matInput placeholder="Téléphone portable" type="number" class="form-control" formControlName="telephone" required>
           </mat-form-field>
           <mat-form-field class="divdeux">
             <mat-label>WhatsApp</mat-label>
@@ -99,7 +100,7 @@
         <div class="autre information">
           <mat-form-field>
             <mat-label>Lien visite HD/3D</mat-label>
-            <input matInput placeholder="Lien visite HD ou 3D" type="text" class="form-control" formControlName="lien_visite" required>
+            <input matInput placeholder="Lien visite HD ou 3D" type="text" class="form-control" formControlName="url_vr" required>
             <mat-error>
               Veuillez fournir un lien valide
             </mat-error>
@@ -110,7 +111,8 @@
           </div>
         </div>
 
-        <button mat-raised-button color="primary" class="btn" >Ajouter l'annonce</button>
+        <button mat-raised-button color="primary" class="btn" *ngIf="isAdd">Ajouter l'annonce</button>
+        <button mat-raised-button color="primary" class="btn" (click)="editAnnonce()" *ngIf="!isAdd">Editer l'annonce</button>
     </form>
     </mat-card-content>
   </mat-card>

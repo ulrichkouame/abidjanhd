@@ -51,7 +51,7 @@ export class AnnoncesService {
 
   // Annonce update
   update(data: Data, id: string): Observable<any> {
-    return this.http.post(this.postItem+id+'/edit', data);
+    return this.http.post(this.apiUrl+id, data);
   }
 
   // Annonde delete
