@@ -24,6 +24,13 @@ export class AnnonceComponent implements OnInit {
       adresse: Pos.Name
     });
   }
+  imgLink(url: string) {
+    console.log(url);
+
+    this.registerForm.patchValue({
+      image: url,
+    });
+  }
 
   registerForm: FormGroup;
   errors: any = null;
@@ -158,6 +165,8 @@ export class AnnonceComponent implements OnInit {
       this.registerForm.patchValue({
         recaptcha: captchaResponse,
       });
+      console.log(this.registerForm.value);
+
     }
   }
 

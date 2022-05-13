@@ -104,9 +104,9 @@
               Veuillez fournir un lien valide
             </mat-error>
           </mat-form-field>
-          <div class="file">
-            <label>Image mise en avant</label>
-            <app-file-upload></app-file-upload>
+          <div class="file" style="display:none;">
+            <label>Image mise en avant</label><br>
+            <app-file-upload (img)="imgLink($event)"></app-file-upload>
           </div>
         </div>
         <div class="recaptcha">

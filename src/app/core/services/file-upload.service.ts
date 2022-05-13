@@ -6,22 +6,22 @@ providedIn: 'root'
 })
 export class FileUploadService {
 
-// API url
-baseApiUrl = "https://file.io"
+  // API url
+  baseApiUrl = "https://file.io"
 
-constructor(private http:HttpClient) { }
+  constructor(private http:HttpClient) { }
 
-// Returns an observable
-upload(file: File):Observable<any> {
+  // Returns an observable
+  upload(file: File):Observable<any> {
 
-	// Create form data
-	const formData = new FormData();
+    // Create form data
+    const formData = new FormData();
 
-	// Store form name as "file" with file data
-	formData.append("file", file, file.name);
+    // Store form name as "file" with file data
+    formData.append("file", file, file.name);
 
-	// Make http post request over api
-	// with formData as req
-	return this.http.post(this.baseApiUrl, formData)
-}
+    // Make http post request over api
+    // with formData as req
+    return this.http.post(this.baseApiUrl, formData)
+  }
 }

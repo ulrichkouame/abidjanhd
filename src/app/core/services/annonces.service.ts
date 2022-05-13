@@ -18,7 +18,7 @@ export class Data {
   latitude!: number;
   lien_visite!: string;
   adresse!: string;
-  image!: string;
+  image!: any;
 }
 
 @Injectable({
