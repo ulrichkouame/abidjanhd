@@ -1,7 +1,6 @@
 <div class="annonce">
   <mat-card>
     <mat-card-content>
-
       <!-- <form class="form-signin" [formGroup]="registerForm" (ngSubmit)="onSubmit()"> -->
       <form class="form-signin" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
         <h2>ANNONCE</h2>
@@ -110,9 +109,15 @@
             <app-file-upload></app-file-upload>
           </div>
         </div>
+        <div class="recaptcha">
+          <re-captcha (resolved)="resolved($event)" siteKey="6Lfzj-gfAAAAALhX3BPkvbCTJZCYFaXW_bS13r0O"></re-captcha>
+          <input matInput placeholder="Recaptcha" type="text" class="form-control" formControlName="recaptcha" required hidden>
+        </div>
 
-        <button mat-raised-button color="primary" class="btn" *ngIf="isAdd">Ajouter l'annonce</button>
-        <button mat-raised-button color="primary" class="btn" (click)="editAnnonce()" *ngIf="!isAdd">Editer l'annonce</button>
+        <button mat-raised-button color="primary" class="btn" *ngIf="isAdd" [disabled]="!registerForm.valid">Ajouter l'annonce</button>
+        <button mat-raised-button color="primary" class="btn" (click)="editAnnonce()" *ngIf="!isAdd" [disabled]="!registerForm.valid">Editer l'annonce</button>
+
+
     </form>
     </mat-card-content>
   </mat-card>

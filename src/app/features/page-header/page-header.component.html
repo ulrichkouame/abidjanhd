@@ -53,7 +53,7 @@
             <span>Mon profil</span>
           </a>
         </button>
-        <button mat-menu-item *ngIf=islogin>
+        <button mat-menu-item *ngIf=islogin (click)="logout()">
           <mat-icon>exit_to_app</mat-icon>
           <span>Se déconnecter</span>
         </button>
