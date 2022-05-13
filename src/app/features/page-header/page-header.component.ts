@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-page-header',
@@ -7,7 +8,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PageHeaderComponent implements OnInit {
 
-  constructor() {}
+  constructor(
+    private router: Router,
+  ) { }
 
   //options: any;
   formData: any = new FormData();
@@ -31,6 +34,11 @@ export class PageHeaderComponent implements OnInit {
 
   ngOnInit(): void {
 
+    if (localStorage.getItem('isLogin') === null) {
+      this.router.navigate(['login']);
+    }
+
+
     //affichage ou non du menu mobile app
     this.menumobile();
     //this.isLogin = localStorage.getItem('isLogin') == 'true' ? true : false;
@@ -48,5 +56,12 @@ export class PageHeaderComponent implements OnInit {
 
   isLogin() {
     this.islogin = localStorage.getItem('isLogin') == 'true' ? true : false;
+  }
+
+  logout() {
+    localStorage.removeItem('auth_token');
+    localStorage.removeItem('isLogin');
+    this.islogin = false;
+    this.router.navigate(['/']);
   }
 }

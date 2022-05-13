@@ -42,6 +42,8 @@ import { GmapComponent } from './features/gmap/gmap.component';
 import { FileUploadComponent } from './features/file-upload/file-upload.component';
 import { ThanksComponent } from './pages/thanks/thanks.component';
 
+import { RecaptchaModule, RecaptchaFormsModule } from 'ng-recaptcha';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -78,6 +80,8 @@ import { ThanksComponent } from './pages/thanks/thanks.component';
     ReactiveFormsModule,
     FormsModule,
     FlexLayoutModule,
+    RecaptchaModule,
+    RecaptchaFormsModule
   ],
   providers: [
     { provide: LOCALE_ID, useValue: 'fr-FR'},

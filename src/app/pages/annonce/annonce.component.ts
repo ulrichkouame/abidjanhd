@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../../core/services/auth.service';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AnnoncesService } from '../../core/services/annonces.service';
 import { Location } from '@angular/common';
 import Swal from 'sweetalert2';
@@ -14,6 +14,7 @@ import Swal from 'sweetalert2';
 export class AnnonceComponent implements OnInit {
 
   isAdd: boolean = true;
+  isCaptchaValide: boolean = false;
   annonce_id: string = '';
 
   editPosition(Pos: { Lat: number; Lon: number; Name: string }) {
@@ -34,23 +35,23 @@ export class AnnonceComponent implements OnInit {
     private location: Location,
   ) {
     this.registerForm = this.fb.group({
-      title: [''],
-      body: [''],
-      categorie: [''],
-      price_min: [''],
-      price_max: [''],
-      lieu: [''],
-      telephone: [''],
-      whatsapp: [''],
-      website: [''],
-      email: [''],
-      longitude: [''],
-      latitude: [''],
-      url_vr: [''],
-      adresse: [''],
+      title: ['', Validators.required],
+      body: ['', Validators.required],
+      categorie: ['', Validators.required],
+      price_min: ['', Validators.required],
+      price_max: ['', Validators.required],
+      lieu: ['', Validators.required],
+      telephone: ['', Validators.required],
+      whatsapp: ['', Validators.required],
+      website: ['', Validators.required],
+      email: ['', Validators.required],
+      longitude: ['', Validators.required],
+      latitude: ['', Validators.required],
+      url_vr: ['', Validators.required],
+      adresse: ['', Validators.required],
       image: [''],
       status: ['EN ATTENTE'],
-
+      recaptcha: ['', Validators.required]
     });
   }
 
@@ -126,6 +127,11 @@ export class AnnonceComponent implements OnInit {
 
   onSubmit() {
 
+    // stop here if form is invalid
+    if (this.registerForm.invalid) {
+      return;
+  }
+
     if (this.isAdd == true) {
       this.addAnnonce();
     }
@@ -144,6 +150,15 @@ export class AnnonceComponent implements OnInit {
     Swal.fire('Annonce', 'Votre annonce a été ajouté avec succès.', 'success').then((result) => {
       this.router.navigate(['/profile']);
     });
+  }
+
+  resolved(captchaResponse: string) {
+    console.log(`Resolved captcha with response: ${captchaResponse}`);
+    if (captchaResponse != null) {
+      this.registerForm.patchValue({
+        recaptcha: captchaResponse,
+      });
+    }
   }
 
 }
