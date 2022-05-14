@@ -1,5 +1,5 @@
 <div class="one-casa">
-    <h2>{{hddata?.titre}}</h2>
+    <h2>{{hddata?.title}}</h2>
     <div class="gauche">
         <div class="info">
             <span class="published">
@@ -12,7 +12,7 @@
             <span class="type-bien">
         <span class="material-icons">
           local_offer
-        </span> {{hddata.id_bien}}
+        </span> {{hddata.categorie}}
             </span>
             <span class="lieu">
         <span class="material-icons">
@@ -21,10 +21,10 @@
             </span>
         </div>
         <div class="description">
-            <h3>{{hddata.prix_min | currency:'F CFA':'symbol':'4.0':'fr-FR' }} - {{hddata.prix_max | currency:'F CFA':'symbol':'4.0':'fr-FR'}}</h3>
-            <div class="casa-body" [innerHTML]="hddata.description"></div>
-            <div class="visiter" *ngIf="hddata.lien_visite">
-                <iframe class="iframe" [src]="hddata.lien_visite | safe" frameborder='0' allowfullscreen allow='xr-spatial-tracking' width="100%" height="500">
+            <h3>{{hddata.price_min | currency:'F CFA':'symbol':'4.0':'fr-FR' }} - {{hddata.price_max | currency:'F CFA':'symbol':'4.0':'fr-FR'}}</h3>
+            <div class="casa-body" [innerHTML]="hddata.body"></div>
+            <div class="visiter" *ngIf="hddata.url_vr">
+                <iframe class="iframe" [src]="hddata.url_vr | safe" frameborder='0' allowfullscreen allow='xr-spatial-tracking' width="100%" height="500">
         </iframe>
             </div>
             <div *ngIf="embedUrl">
@@ -35,23 +35,33 @@
     </div>
     <div class="droite">
         <h3>Contact</h3>
-        <div class="geo">
-            <span class="material-icons">
-        location_on
-      </span>
-            <div>
-                Géolocalisation <br> {{hddata?.lieu}}
-            </div>
+        <div class="geo" *ngIf="hddata?.adresse">
+          <span class="material-icons">
+            location_on
+          </span>
+          {{hddata?.adresse}}
         </div>
         <div class="geo">
             <ul id="whooper">
-                <li>
-                    <mat-icon>phone</mat-icon>
-                    <a target="_blank" [href]="'tel://'+hddata?.portable">{{hddata?.portable}}</a>
+                <li *ngIf="hddata?.website">
+                  <mat-icon>language</mat-icon>
+                  <a target="_blank" href="hddata?.website">{{hddata?.website}}</a>
                 </li>
-                <li>
+                <li *ngIf="hddata?.email">
+                    <mat-icon>email</mat-icon>
+                    <a target="_blank" href="{{hddata?.email}}">{{hddata?.email}}</a>
+                </li>
+            </ul>
+        </div>
+        <div class="geo">
+            <ul id="whooper">
+                <li *ngIf="hddata?.telephone">
+                    <mat-icon>phone</mat-icon>
+                    <a target="_blank" href="tel:{{hddata?.telephone}}">{{hddata?.telephone}}</a>
+                </li>
+                <li *ngIf="hddata?.whatsapp">
                     <mat-icon>whatsapp</mat-icon>
-                    <a target="_blank" [href]="'whatsapp://'+hddata?.portable">{{hddata?.whatsapp}}</a>
+                    <a target="_blank" href="whatsapp://{{hddata?.whatsapp}}">{{hddata?.whatsapp}}</a>
                 </li>
             </ul>
         </div>

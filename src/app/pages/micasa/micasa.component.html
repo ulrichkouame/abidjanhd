@@ -8,7 +8,7 @@
             <a routerLink="/micasa/{{post.id}}" [state]="{ data:post }"><img src="https://abidjanhd.bigfive.dev/storage/{{post.image}}" alt="{{post.title}}" onerror="this.src='assets/img/placeholder.webp'" /></a>
         </div>
         <div class="droite">
-            <h2><a routerLink="/micasa/{{post.id}}" [state]="{ data:post }">{{post.titre}}</a></h2>
+            <h2><a routerLink="/micasa/{{post.id}}" [state]="{ data:post }">{{post.title}}</a></h2>
             <div class="info">
                 <span class="published">
             <span class="material-icons">
@@ -21,7 +21,7 @@
                 <span class="type-bien">
             <span class="material-icons">
               local_offer
-            </span> {{post.id_bien}}
+            </span> {{post.categorie}}
                 </span>
                 <span class="lieu">
             <span class="material-icons">
@@ -29,7 +29,7 @@
             </span> Lieu : {{post.lieu}}
                 </span>
             </div>
-            <h3>{{post.prix_min | currency:'F CFA':'symbol':'4.0':'fr-FR'}} - {{post.prix_max | currency:'F CFA':'symbol':'4.0':'fr-FR'}}</h3>
+            <h3>{{post.price_min | currency:'F CFA':'symbol':'4.0':'fr-FR'}} <span *ngIf="post.price_max"> - {{post.price_max | currency:'F CFA':'symbol':'4.0':'fr-FR'}}</span></h3>
         </div>
 
     </div>

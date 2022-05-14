@@ -23,8 +23,6 @@ export class OneCasaComponent implements OnInit {
 
       if (this.posts[i]?.id == id) {
         this.hddata = this.posts[i]
-        console.log(this.hddata);
-
       }
     }
 
