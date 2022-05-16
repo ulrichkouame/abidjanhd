@@ -43,6 +43,8 @@ export class FileUploadComponent implements OnInit {
 		console.log(this.file);
 		this.fileUploadService.upload(this.file).subscribe(
 			(event: any) => {
+        console.log(event);
+
 				if (typeof (event) === 'object') {
 
 					// Short link via api response

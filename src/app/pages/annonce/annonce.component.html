@@ -26,7 +26,7 @@
           </mat-error>
         </mat-form-field>
         <mat-form-field class="example-full-width">
-          <mat-label>Descriptiion</mat-label>
+          <mat-label>Description</mat-label>
           <textarea matInput placeholder="Information détaillée sur votre annonce." formControlName="body" required></textarea>
         </mat-form-field>
         <div class="detail-offre">
@@ -104,8 +104,18 @@
               Veuillez fournir un lien valide
             </mat-error>
           </mat-form-field>
-          <div class="file" style="display:none;">
+          <div class="file">
             <label>Image mise en avant</label><br>
+            <div *ngIf="data?.image">
+              <!-- Shareable short link of uoloaded file -->
+              <div class="container text-center jumbotron image"
+                >
+                <img src="https://abidjanhd.bigfive.dev/storage/{{data.image}}">
+                <br><br>
+                <h3> Changer l'image </h3>
+              </div>
+            </div>
+            <br>
             <app-file-upload (img)="imgLink($event)"></app-file-upload>
           </div>
         </div>

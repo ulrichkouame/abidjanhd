@@ -16,6 +16,8 @@ export class AnnonceComponent implements OnInit {
   isAdd: boolean = true;
   isCaptchaValide: boolean = false;
   annonce_id: string = '';
+  file!: File; // Variable to store file
+  data!: any;
 
   editPosition(Pos: { Lat: number; Lon: number; Name: string }) {
     this.registerForm.patchValue({
@@ -24,12 +26,8 @@ export class AnnonceComponent implements OnInit {
       adresse: Pos.Name
     });
   }
-  imgLink(url: string) {
-    console.log(url);
-
-    this.registerForm.patchValue({
-      image: url,
-    });
+  imgLink(image: File) {
+    this.file = image;
   }
 
   registerForm: FormGroup;
@@ -56,7 +54,7 @@ export class AnnonceComponent implements OnInit {
       latitude: ['', Validators.required],
       url_vr: ['', Validators.required],
       adresse: ['', Validators.required],
-      image: [''],
+      image: [File],
       status: ['EN ATTENTE'],
       recaptcha: ['', Validators.required]
     });
@@ -65,7 +63,7 @@ export class AnnonceComponent implements OnInit {
   public addAnnonce() {
 
     //Recupertation des annonces
-    this.annonce.create(this.registerForm.value).subscribe(
+    this.annonce.create(this.registerForm.value, this.file).subscribe(
       (result) => {
         this.successNotificationAdd()
       },
@@ -78,7 +76,7 @@ export class AnnonceComponent implements OnInit {
 
   public editAnnonce() {
     //Recupertation des annonces
-    this.annonce.update(this.registerForm.value, this.annonce_id).subscribe(
+    this.annonce.update(this.registerForm.value, this.annonce_id, this.file).subscribe(
       (result) => {
         this.successNotificationUpdate();
       },
@@ -101,7 +99,9 @@ export class AnnonceComponent implements OnInit {
         //Recupertation des informations de l'annonce
         this.annonce.post(this.annonce_id).subscribe(
           (result) => {
+
             const data = result.data;
+            this.data = result.data;
 
             this.registerForm.patchValue({
               title: data.title,
@@ -137,36 +137,32 @@ export class AnnonceComponent implements OnInit {
     // stop here if form is invalid
     if (this.registerForm.invalid) {
       return;
-  }
+    }
 
     if (this.isAdd == true) {
       this.addAnnonce();
     }
     if (this.isAdd == false) {
-      console.log(this.isAdd);
       this.editAnnonce
     }
   }
 
   successNotificationUpdate() {
     Swal.fire('Mise à jour annonce', 'Votre annonce a été mise à jour avec succès.', 'success').then((result) => {
-      this.router.navigate(['/profile']);
+      //this.router.navigate(['/profile']);
     });
   }
   successNotificationAdd() {
     Swal.fire('Annonce', 'Votre annonce a été ajouté avec succès.', 'success').then((result) => {
-      this.router.navigate(['/profile']);
+      //this.router.navigate(['/profile']);
     });
   }
 
   resolved(captchaResponse: string) {
-    console.log(`Resolved captcha with response: ${captchaResponse}`);
     if (captchaResponse != null) {
       this.registerForm.patchValue({
         recaptcha: captchaResponse,
       });
-      console.log(this.registerForm.value);
-
     }
   }
 

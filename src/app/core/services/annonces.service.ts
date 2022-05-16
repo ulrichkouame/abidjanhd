@@ -4,19 +4,19 @@ import { Observable } from 'rxjs';
 
 // Annonces interface
 export class Data {
-  titre!: string;
-  description!: string;
+  title!: string;
+  body!: string;
   categorie!: string;
-  price_min!: number;
-  price_max!: number;
+  price_min!: string;
+  price_max!: string;
   lieu!: string;
-  portable!: string;
+  telephone!: string;
   whatsapp!: string;
   website!: string;
   email!: string;
-  longitude!: number;
-  latitude!: number;
-  lien_visite!: string;
+  longitude!: string;
+  latitude!: string;
+  url_vr!: string;
   adresse!: string;
   image!: any;
 }
@@ -50,8 +50,29 @@ export class AnnoncesService {
   }
 
   // Annonce update
-  update(data: Data, id: string): Observable<any> {
-    return this.http.post(this.apiUrl+id, data);
+  update(data: Data, id: string, file: File): Observable<any> {
+
+    // Create form data
+    const formData = new FormData();
+
+    // Store form name as "file" with file data
+    formData.append('image', file);
+    formData.append('title', data.title);
+    formData.append('body', data.body);
+    formData.append('categorie', data.categorie);
+    formData.append('price_min', data.price_min);
+    formData.append('price_max', data.price_max);
+    formData.append('lieu', data.lieu);
+    formData.append('telephone', data.telephone);
+    formData.append('whatsapp', data.whatsapp);
+    formData.append('website', data.website);
+    formData.append('email', data.email);
+    formData.append('longitude', data.longitude);
+    formData.append('latitude', data.latitude);
+    formData.append('url_vr', data.url_vr);
+    formData.append('adresse', data.adresse);
+
+    return this.http.post(this.apiUrl+id, formData);
   }
 
   // Annonde delete
@@ -60,8 +81,30 @@ export class AnnoncesService {
   }
 
   // Post annonce
-  create(data: any): Observable<any> {
-    return this.http.post(this.apiUrl, data);
+  create(data: any, file: File): Observable<any> {
+
+    // Create form data
+    const formData = new FormData();
+
+    // Store form name as "file" with file data
+    formData.append('image', file);
+    formData.append('title', data.title);
+    formData.append('body', data.body);
+    formData.append('categorie', data.categorie);
+    formData.append('price_min', data.price_min);
+    formData.append('price_max', data.price_max);
+    formData.append('lieu', data.lieu);
+    formData.append('telephone', data.telephone);
+    formData.append('whatsapp', data.whatsapp);
+    formData.append('website', data.website);
+    formData.append('email', data.email);
+    formData.append('longitude', data.longitude);
+    formData.append('latitude', data.latitude);
+    formData.append('url_vr', data.url_vr);
+    formData.append('adresse', data.adresse);
+    formData.append('status', "PUBLIER");
+
+    return this.http.post(this.apiUrl, formData);
   }
 
 }
