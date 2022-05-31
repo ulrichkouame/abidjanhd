@@ -21,7 +21,7 @@
             </span>
         </div>
         <div class="description">
-            <h3>{{hddata.price_min | currency:'F CFA':'symbol':'4.0':'fr-FR' }} - {{hddata.price_max | currency:'F CFA':'symbol':'4.0':'fr-FR'}}</h3>
+            <h3>Prix : {{hddata.price_min | currency:'F CFA':'symbol':'4.0':'fr-FR' }}</h3>
             <div class="casa-body" [innerHTML]="hddata.body"></div>
             <div class="visiter" *ngIf="hddata.url_vr">
                 <iframe class="iframe" [src]="hddata.url_vr | safe" frameborder='0' allowfullscreen allow='xr-spatial-tracking' width="100%" height="500">
@@ -49,7 +49,7 @@
                 </li>
                 <li *ngIf="hddata?.email">
                     <mat-icon>email</mat-icon>
-                    <a target="_blank" href="{{hddata?.email}}">{{hddata?.email}}</a>
+                    <a target="_blank" href="mailto:{{hddata?.email}}">{{hddata?.email}}</a>
                 </li>
             </ul>
         </div>

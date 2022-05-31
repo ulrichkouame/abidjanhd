@@ -29,7 +29,7 @@
             </span> Lieu : {{post.lieu}}
                 </span>
             </div>
-            <h3>{{post.price_min | currency:'F CFA':'symbol':'4.0':'fr-FR'}} <span *ngIf="post.price_max"> - {{post.price_max | currency:'F CFA':'symbol':'4.0':'fr-FR'}}</span></h3>
+            <h3>	<mat-icon>shopping_cart</mat-icon> Prix : {{post.price_min | currency:'F CFA':'symbol':'4.0':'fr-FR'}}</h3>
         </div>
 
     </div>

@@ -44,7 +44,6 @@ export class AnnonceComponent implements OnInit {
       body: ['', Validators.required],
       categorie: ['', Validators.required],
       price_min: ['', Validators.required],
-      price_max: ['', Validators.required],
       lieu: ['', Validators.required],
       telephone: ['', Validators.required],
       whatsapp: ['', Validators.required],
@@ -108,7 +107,6 @@ export class AnnonceComponent implements OnInit {
               body: data.body,
               categorie: data.categorie,
               price_min: data.price_min,
-              price_max: data.price_max,
               lieu: data.lieu,
               telephone: data.telephone,
               whatsapp: data.whatsapp,
@@ -149,12 +147,12 @@ export class AnnonceComponent implements OnInit {
 
   successNotificationUpdate() {
     Swal.fire('Mise à jour annonce', 'Votre annonce a été mise à jour avec succès.', 'success').then((result) => {
-      //this.router.navigate(['/profile']);
+      this.router.navigate(['/micasa']);
     });
   }
   successNotificationAdd() {
     Swal.fire('Annonce', 'Votre annonce a été ajouté avec succès.', 'success').then((result) => {
-      //this.router.navigate(['/profile']);
+      this.router.navigate(['/micasa']);
     });
   }
 
